@@ -34,7 +34,6 @@ async function fetchContributors() {
         allContributors = await response.json();
         
         const leadAvatar = document.getElementById('lead-avatar');
-        const leadName = document.getElementById('lead-name');
         
         // Update Total Contributors Count
         document.getElementById('total-contributors').textContent = allContributors.length;
@@ -44,11 +43,8 @@ async function fetchContributors() {
         allContributors.forEach(contributor => {
             totalCommits += contributor.contributions;
             
-            // Update Lead Image if match found
             if(contributor.login.toLowerCase() === REPO_OWNER.toLowerCase()) {
                 leadAvatar.src = contributor.avatar_url;
-                // Optional: Update name if you had an API for user details, 
-                // otherwise it stays hardcoded as 'Sayee Gosavi' in HTML
             }
         });
 
@@ -63,16 +59,16 @@ async function fetchContributors() {
     }
 }
 
-// Helper: Get Badge based on commits
+// Helper: Get Badge AND Card Tier based on commits
 function getBadge(commits) {
     if (commits >= 50) {
-        return { text: 'Gold 🏆', class: 'badge-gold' };
+        return { text: 'Gold 🏆', class: 'badge-gold', tier: 'tier-gold' };
     } else if (commits >= 21) {
-        return { text: 'Silver 🥈', class: 'badge-silver' };
+        return { text: 'Silver 🥈', class: 'badge-silver', tier: 'tier-silver' };
     } else if (commits >= 10) {
-        return { text: 'Bronze 🥉', class: 'badge-bronze' };
+        return { text: 'Bronze 🥉', class: 'badge-bronze', tier: 'tier-bronze' };
     } else {
-        return { text: 'Contributor !!', class: 'badge-contributor' };
+        return { text: 'Contributor 🚀', class: 'badge-contributor', tier: 'tier-contributor' };
     }
 }
 
@@ -89,8 +85,10 @@ function renderContributors(page) {
     paginatedItems.forEach(contributor => {
         const badgeData = getBadge(contributor.contributions);
 
+        // Create Card with TIER Class
         const card = document.createElement('div');
-        card.className = 'contributor-card';
+        card.className = `contributor-card ${badgeData.tier}`; // Adds specific tier class
+        
         card.innerHTML = `
             <img src="${contributor.avatar_url}" alt="${contributor.login}">
             <a href="${contributor.html_url}" target="_blank" class="cont-name">${contributor.login}</a>
@@ -129,7 +127,6 @@ window.changePage = function(newPage) {
     currentPage = newPage;
     renderContributors(newPage);
 };
-
 
 // 4. Fetch Recent Commit Activity
 async function fetchRecentActivity() {

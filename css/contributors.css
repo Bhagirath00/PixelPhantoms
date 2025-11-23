@@ -92,23 +92,27 @@
 /* 3. Contributors Grid */
 .contributors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Slightly narrower columns */
+    gap: 20px;
     min-height: 200px;
 }
 
 .contributor-card {
     background: var(--card-bg);
-    padding: 25px 20px;
-    border-radius: 15px;
+    padding: 15px; /* Reduced padding */
+    border-radius: 12px;
     text-align: center;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    
+    /* Layout Fixes for Height */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 100%;
+    justify-content: center; /* Centers content vertically */
+    gap: 8px; /* Keeps elements close together */
+    
+    height: 100%; /* Ensures equal height in row, but row will be shorter now */
 }
 
 .contributor-card:hover {
@@ -118,97 +122,34 @@
 }
 
 .contributor-card img {
-    width: 80px;
-    height: 80px;
+    width: 60px; /* Smaller image */
+    height: 60px;
     border-radius: 50%;
-    margin-bottom: 15px;
     border: 2px solid var(--border-color);
+    object-fit: cover;
+    margin: 0; /* Margin handled by flex gap */
 }
 
 .contributor-card .cont-name {
     font-weight: bold;
     color: var(--text-primary);
     display: block;
-    margin-bottom: 10px;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Slightly smaller font */
+    line-height: 1.3;
 }
 
-/* --- NEW BADGE STYLES --- */
+/* Badge Adjustments */
 .cont-commits-badge {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-    border-radius: 20px;
+    font-size: 0.75rem; /* Smaller text */
+    padding: 4px 10px;
+    border-radius: 15px;
     font-weight: 600;
-    margin-top: auto;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     border: 1px solid transparent;
-}
-
-/* Gold Badge (50+) */
-.badge-gold {
-    background: rgba(255, 215, 0, 0.1);
-    color: #FFD700;
-    border-color: #FFD700;
-}
-
-/* Silver Badge (21-49) */
-.badge-silver {
-    background: rgba(192, 192, 192, 0.1);
-    color: #C0C0C0;
-    border-color: #C0C0C0;
-}
-
-/* Bronze Badge (10-20) */
-.badge-bronze {
-    background: rgba(205, 127, 50, 0.1);
-    color: #CD7F32;
-    border-color: #CD7F32;
-}
-
-/* Contributor Badge (1-9) */
-.badge-contributor {
-    background: rgba(0, 255, 127, 0.1);
-    color: #00ff7f;
-    border-color: #00ff7f;
-}
-
-/* --- PAGINATION CONTROLS --- */
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    gap: 15px;
-}
-
-.pagination-btn {
-    background: var(--card-bg);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 600;
-}
-
-.pagination-btn:hover:not(:disabled) {
-    background: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
-}
-
-.pagination-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.page-info {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    margin-top: 2px;
 }
 
 /* 4. Activity Timeline */
