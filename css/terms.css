@@ -1,6 +1,6 @@
-/* TERMS OF SERVICE STYLES */
+/* ================= TERMS OF SERVICE STYLES ================= */
 
-/* HEADER SECTION */
+/* --- HEADER SECTION --- */
 .terms-header {
     text-align: center;
     padding: 80px 20px 60px;
@@ -17,6 +17,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
     display: inline-block;
 }
 
@@ -31,23 +32,23 @@
     font-size: 0.9rem;
     color: var(--accent-color);
     font-weight: 600;
+    opacity: 0.8;
     background: rgba(0, 170, 255, 0.1);
     padding: 5px 15px;
     border-radius: 20px;
-    border: 1px solid rgba(0, 170, 255, 0.2);
 }
 
-/* MAIN LAYOUT */
+/* --- MAIN LAYOUT --- */
 .terms-container {
     max-width: 1200px;
     margin: 60px auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1fr; /* Content vs Sidebar */
     gap: 40px;
 }
 
-/* TERMS CARDS */
+/* --- TERMS CARDS --- */
 .terms-wrapper {
     display: flex;
     flex-direction: column;
@@ -63,7 +64,7 @@
     gap: 20px;
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
-    opacity: 0;
+    opacity: 0; /* For animation */
     transform: translateY(20px);
 }
 
@@ -124,28 +125,17 @@
     font-weight: bold;
 }
 
-/* Grievance Mini Card */
-.contact-mini-card {
-    background: rgba(0, 170, 255, 0.05);
-    border-left: 4px solid var(--accent-color);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    font-size: 0.95rem;
-    color: var(--text-primary);
-}
-
-.contact-mini-card a {
+.term-content a {
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-.contact-mini-card a:hover {
+.term-content a:hover {
     text-decoration: underline;
 }
 
-/* SIDEBAR */
+/* --- SIDEBAR --- */
 .terms-sidebar {
     position: sticky;
     top: 100px;
@@ -223,7 +213,7 @@
     transform: translateY(-2px);
 }
 
-/* RESPONSIVE */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
     .terms-container {
         grid-template-columns: 1fr;

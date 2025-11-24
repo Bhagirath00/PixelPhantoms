@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Phantoms | Events</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -11,23 +11,81 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
     <div id="navbar-placeholder"></div>
     <script src="js/navbar.js"></script>
     <script>renderNavbar();</script>
 
-    <!-- HERO -->
     <section class="hero events-hero">
         <h1>Campus Events</h1>
         <p>Workshops, hackathons, meetups, and more — all in one place.</p>
+        
+        <div id="countdown-section" class="countdown-hidden">
+            <h3>Next Big Event Starts In:</h3>
+            <div id="countdown-timer">
+                <div class="time-unit">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">00</span>
+                    <label>Mins</label>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">00</span>
+                    <label>Secs</label>
+                </div>
+            </div>
+            <p id="next-event-name" class="highlight-event"></p>
+        </div>
     </section>
 
-    <!-- EVENTS GRID -->
-    <section class="events-container" id="events-container">
-        <p class="loading-msg">Loading events...</p>
+    <section class="content">
+        <div class="events-container" id="events-container">
+            <p class="loading-msg">Loading events...</p>
+        </div>
+        
+        <div id="pagination-controls" class="pagination-container"></div>
     </section>
 
-    <!-- FOOTER -->
+    <section class="organize-section">
+        <div class="organize-container">
+            <div class="organize-content">
+                <h2> Host an Event</h2>
+                <p>Have an idea for a workshop or hackathon? Submit your proposal!</p>
+                <form id="organize-form">
+                    <div class="form-row">
+                        <div class="form-group"> <label>Event Title</label>
+                            <input type="text" id="event-title" placeholder="e.g. Intro to DevOps" required>
+                        </div>
+                        <div class="form-group"> <label>Event Type</label>
+                            <select id="event-type">
+                                <option value="workshop">Workshop</option>
+                                <option value="hackathon">Hackathon</option>
+                                <option value="meetup">Meetup</option>
+                                <option value="webinar">Webinar</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"> <label>Proposed Date</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    <div class="form-group"> <label>Description</label>
+                        <textarea id="event-desc" rows="4" placeholder="Briefly describe the event goal..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-organize">Submit Proposal</button>
+                    <div id="organize-feedback" class="feedback-message"></div>
+                </form>
+            </div>
+            <div class="organize-image">
+                <img src="assets/host-event.jpg" alt="Host an Event Illustration">
+            </div>
+        </div>
+    </section>
+
     <div id="footer-placeholder"></div>
     <script src="js/footer.js"></script>
     <script>renderFooter();</script>
