@@ -1,98 +1,109 @@
 document.addEventListener("DOMContentLoaded", () => {
-        gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-    // --- 1. HERO ANIMATION (On Load) ---
-    const heroTl = gsap.timeline();
+    // --- 1. TEXT SCRAMBLE EFFECT (Functional Animation) ---
+    // Simulates a "decoding" effect on load
+    const consoleLines = document.querySelectorAll(".console-text");
+    const tl = gsap.timeline();
 
-    heroTl.to(".hero-title", {
-        y: 0,
-        duration: 1.2,
-        ease: "power4.out",
-        stagger: 0.2
-    })
-    .to(".hero-subtitle", {
-        opacity: 1,
-        y: -10,
-        duration: 0.8
-    }, "-=0.5")
-    .to(".hero-cta", {
-        opacity: 1,
-        y: -10,
-        duration: 0.8
-    }, "-=0.6");
-
-    // --- 2. ABOUT TEXT REVEAL (On Scroll) ---
-    gsap.from(".reveal-text", {
-        scrollTrigger: {
-            trigger: ".about-section",
-            start: "top 75%",
-            toggleActions: "play none none reverse"
-        },
-        y: 50,
-        opacity: 0,
+    // Animate Title
+    tl.from(".hero-glitch", {
         duration: 1,
-        ease: "power3.out"
+        opacity: 0,
+        y: 20,
+        ease: "power2.out"
     });
 
-    // --- 3. HORIZONTAL SCROLL SECTION ---
-    const races = document.querySelector(".pin-content");
+    // Staggered Console Lines with "Typewriter" feel
+    consoleLines.forEach((line, index) => {
+        tl.to(line, {
+            opacity: 1,
+            duration: 0.5,
+            text: line.innerText, // Requires TextPlugin, simplified fallback here:
+            onStart: () => {
+                // Simple scramble logic for raw JS fallback
+                const originalText = line.innerText;
+                let iterations = 0;
+                const interval = setInterval(() => {
+                    line.innerText = originalText
+                        .split("")
+                        .map((letter, i) => {
+                            if (i < iterations) return originalText[i];
+                            return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[Math.floor(Math.random() * 36)];
+                        })
+                        .join("");
+                    if (iterations >= originalText.length) clearInterval(interval);
+                    iterations += 1/2; 
+                }, 30);
+            }
+        }, "-=0.2");
+    });
+
+    // Reveal CTA
+    tl.to(".hero-cta-group", { opacity: 1, y: 0, duration: 0.5 });
+
+
+    // --- 2. CUSTOM CURSOR SPOTLIGHT (Dynamic Animation) ---
+    const cursor = document.getElementById('cursor-highlight');
     
-    function getScrollAmount() {
-        let racesWidth = races.scrollWidth;
-        return -(racesWidth - window.innerWidth);
+    // Only active on desktop
+    if (window.matchMedia("(pointer: fine)").matches) {
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.1, // Quick follow
+                ease: "power2.out"
+            });
+        });
+    } else {
+        if(cursor) cursor.style.display = 'none';
     }
 
-    const tween = gsap.to(races, {
-        x: getScrollAmount,
-        ease: "none"
-    });
 
-    ScrollTrigger.create({
-        trigger: ".horizontal-section",
-        start: "top top",
-        end: () => `+=${getScrollAmount() * -1}`, // Scroll length matches width
-        pin: true,
-        animation: tween,
-        scrub: 1,
-        invalidateOnRefresh: true
-    });
-
-    // --- 4. NEW: DROP DOWN ANIMATION FOR MESSAGES & SUPPORT ---
-    // Select all elements with the 'drop-anim' class
-    const dropItems = document.querySelectorAll('.drop-anim');
+    // --- 3. 3D TILT EFFECT FOR HACKATHON CARD (Interactive) ---
+    const tiltCard = document.querySelector('.hack-main-card');
     
-    dropItems.forEach(item => {
-        gsap.to(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: "top 85%", // Triggers when top of element hits 85% of viewport
-                toggleActions: "play none none reverse"
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "back.out(1.7)" // Bouncy drop effect
-        });
-    });
+    if (tiltCard) {
+        tiltCard.addEventListener('mousemove', (e) => {
+            const rect = tiltCard.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+            
+            const xPct = x / rect.width;
+            const yPct = y / rect.height;
 
-    // --- 5. STATS COUNTER ANIMATION ---
-    const counters = document.querySelectorAll('.counter');
-    
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        
-        ScrollTrigger.create({
-            trigger: counter,
-            start: "top 85%",
-            once: true,
-            onEnter: () => {
-                gsap.to(counter, {
-                    innerHTML: target,
-                    duration: 2,
-                    snap: { innerHTML: 1 },
-                    ease: "power1.out"
-                });
-            }
+            const rotateX = (0.5 - yPct) * 10; // Max 10deg rotation
+            const rotateY = (xPct - 0.5) * 10;
+
+            gsap.to(tiltCard, {
+                rotationY: rotateY,
+                rotationX: rotateX,
+                transformPerspective: 1000,
+                duration: 0.5,
+                ease: "power2.out"
+            });
         });
+
+        tiltCard.addEventListener('mouseleave', () => {
+            gsap.to(tiltCard, {
+                rotationY: 0,
+                rotationX: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        });
+    }
+
+    // --- 4. TERMINAL LOG STAGGER (Simple Scroll Trigger) ---
+    gsap.from(".log-entry", {
+        scrollTrigger: {
+            trigger: ".terminal-window",
+            start: "top 80%",
+        },
+        opacity: 0,
+        x: -20,
+        stagger: 0.2,
+        duration: 0.5
     });
 });
