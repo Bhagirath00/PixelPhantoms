@@ -3,6 +3,7 @@
    ========================================= */
 
 :root {
+    /* Default Dark Theme Variables */
     --hud-bg: #050505;
     --panel-bg: rgba(16, 20, 24, 0.8);
     --panel-border: 1px solid rgba(0, 255, 255, 0.15);
@@ -17,8 +18,24 @@
     --font-mono: 'JetBrains Mono', monospace;
 }
 
+/* Light Theme Overrides */
+[data-theme="light"] {
+    --hud-bg: #f0f2f5;
+    --panel-bg: rgba(255, 255, 255, 0.9);
+    --panel-border: 1px solid rgba(0, 0, 0, 0.1);
+    --neon-cyan: #0077b6; /* Darker blue for visibility on light bg */
+    --neon-purple: #7209b7;
+    --neon-green: #008000;
+    --neon-red: #d00000;
+    --neon-yellow: #e6b800;
+    --text-main: #1a1a1a;
+    --text-dim: #555555;
+}
+
 body.hud-mode {
     background-color: var(--hud-bg);
+    /* Adjust gradient opacity for light mode via variables if needed, 
+       or simply use the background color */
     background-image: 
         radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.05), transparent 25%),
         radial-gradient(circle at 85% 30%, rgba(188, 19, 254, 0.05), transparent 25%);
@@ -26,6 +43,7 @@ body.hud-mode {
     overflow-x: hidden;
     color: var(--text-main);
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dashboard-container {
@@ -37,7 +55,7 @@ body.hud-mode {
 /* --- SIDEBAR --- */
 .hud-sidebar {
     width: 80px;
-    background: rgba(10, 10, 15, 0.8);
+    background: var(--panel-bg); /* Updated to use var for theme switching */
     border-right: 1px solid rgba(255,255,255,0.05);
     display: flex;
     flex-direction: column;
@@ -45,6 +63,7 @@ body.hud-mode {
     padding-top: 30px;
     z-index: 10;
     backdrop-filter: blur(10px);
+    transition: background 0.3s ease;
 }
 
 .sidebar-icon {
