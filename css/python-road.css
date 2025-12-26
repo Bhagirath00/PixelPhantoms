@@ -7,69 +7,117 @@
 
 .roadmap-wrapper {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px; /* Slightly wider for better spacing */
     margin: 50px auto;
     padding: 0 20px;
+    overflow: visible; /* Ensure content isn't clipped */
+}
+
+/* Clearfix for floating nodes */
+.roadmap-content::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .roadmap-spine {
     position: absolute;
     left: 50%;
+    top: 0;
+    bottom: 0;
     width: 4px;
-    height: 100%;
     background: linear-gradient(to bottom, var(--python-blue), var(--python-yellow));
     transform: translateX(-50%);
+    z-index: -1;
 }
 
 .chapter-node {
     position: relative;
     width: 45%;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     background: #0a0a0a;
     border: 1px solid #333;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 20px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    clear: both; /* Prevents overlap of consecutive nodes */
 }
 
-.chapter-node.left { float: left; clear: both; text-align: right; }
-.chapter-node.right { float: right; clear: both; text-align: left; }
+.chapter-node.left { float: left; text-align: right; }
+.chapter-node.right { float: right; text-align: left; }
+
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.chapter-node.left .node-header {
+    flex-direction: row-reverse;
+}
 
 .toggle-btn {
     background: none;
     border: 1px solid var(--python-yellow);
     color: var(--python-yellow);
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
     border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.toggle-btn.active { transform: rotate(45deg); background: var(--python-yellow); color: #000; }
+.toggle-btn.active { 
+    transform: rotate(45deg); 
+    background: var(--python-yellow); 
+    color: #000; 
+}
 
 .chapter-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
+    transition: max-height 0.6s ease-out, opacity 0.4s;
+    opacity: 0;
     border-top: 0px solid transparent;
 }
 
 .chapter-details.open {
-    max-height: 500px;
+    max-height: 1000px;
+    opacity: 1;
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid #222;
 }
 
-.module-link {
-    display: block;
+.phase-desc {
     color: #888;
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 5px 0;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
 }
 
-.module-link:hover { color: var(--python-blue); text-shadow: var(--glow); }
+.module-link {
+    display: block;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    transition: 0.3s;
+}
+
+.module-link:hover { 
+    color: var(--python-yellow); 
+    transform: translateX(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .roadmap-spine { left: 20px; }
+    .chapter-node { width: 85%; margin-left: 50px !important; float: none !important; text-align: left !important; }
+    .chapter-node.left .node-header { flex-direction: row; }
+}
