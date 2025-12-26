@@ -1,32 +1,13 @@
-## Table of Contents
-- [👻 Pixel Phantoms — From Students, For Students](#-pixel-phantoms--from-students-for-students)
-- [🌟 Project Overview](#-project-overview)
-- [🚀 Why This Project Matters](#-why-this-project-matters)
-- [📦 How to Install & Run Locally](#-how-to-install--run-locally)
-- [📁 Project Structure](#-project-structure)
-- [🎨 Screenshot / Demo](#-screenshot--demo)
-- [🤝 How to Contribute](#-how-to-contribute)
-- [🧑‍💻 Core Committee — 2024–25](#-core-committee--2024-25)
-- [🛠 Tech Stack](#-tech-stack)
-- [🗺️ Project Roadmap](#-project-roadmap)
-- [📝 Issues](#-issues)
-- [📌 License](#-license)
-- [🔥 Contributors](#-contributors)
-- [📫 Contact](#-contact)
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Pixel%20Phantoms&desc=From%20Students,%20%20For%20Students&descAlign=49&descAlignY=51&fontAlignY=36"/>
+</p>
 
-
-## 👻 Pixel Phantoms — From Students, For Students
+<h2 align='center'><b>Pixel Phantoms Official Website</b> is a <i>beginner-friendly, responsive, open-source</i> community</h2>
 
 ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)   
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
----
-
-## 🌟 Project Overview
-
-**Pixel Phantoms Official Website** is a **beginner-friendly, responsive, open-source community website** built using **HTML, CSS, and JavaScript**.
-
-The project aims to:
+The project aims to,
 
 - Showcase the **Pixel Phantoms community**
 - Display **events, workshops, achievements, and projects**
@@ -34,17 +15,42 @@ The project aims to:
 - Provide **contact & recruitment** sections
 - Serve as a platform for students to **learn and contribute**
 
-This repository welcomes **students, beginners, and open-source contributors**.
+> This repository welcomes **students, beginners, and open-source contributors**.
 
 ---
 
-## 🚀 Why This Project Matters
+## Table of Contents
+- [Why This Project Matters](#-why-this-project-matters)
+- [Tech Stack](#-tech-stack)
+- [How to Install & Run Locally](#-how-to-install--run-locally)
+- [How to Contribute](#-how-to-contribute)
+- [Project Structure](#--project-structure)
+- [Screenshot / Demo](#--screenshot--demo)
+- [Project Roadmap](#%EF%B8%8F-project-roadmap)
+- [Issues](#-issues)
+- [License](#-license)
+- [Core Committee — 2024–25](#%E2%80%8D-core-committee)
+- [Contributors](#-contributors)
+- [Contact](#-contact)
 
-✔ Beginner-friendly for first-time contributors  
-✔ Helps students learn **frontend development**  
-✔ Encourages open-source collaboration  
-✔ Real-world project structure and components  
-✔ Great for improving UI/UX, layout, and responsiveness  
+---
+
+## 🌟 Why This Project Matters
+
+- Beginner-friendly for first-time contributors  
+- Helps students learn **frontend development**  
+- Encourages open-source collaboration  
+- Real-world project structure and components  
+- Great for improving UI/UX, layout, and responsiveness  
+
+
+## 🛠 Tech Stack
+
+**Frontend:** <img width='20px' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" /> HTML5 / 
+            <img width='20px' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" /> CSS3 / 
+            <img width='20px' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />JavaScript
+
+**Optional Add-ons:** Bootstrap / AOS Animations / jQuery / API Integrations
 
 ---
 
@@ -74,10 +80,51 @@ You can:
 
 The website will open in your default browser at `http://127.0.0.1:5500/` (or similar local server address).
 
+## 🤝 How to Contribute
+
+We welcome **all contributions** — design updates, animations, UI fixes, new pages, and more.
+
+### ✔ Before you start:
+
+* Create an **Issue**
+* Wait for the admin to **assign** it
+* Start contributing 🚀
+
+### 📌 Contribution Steps
+
+1. Fork the repository
+2. Clone your fork:
+
+   ```bash
+   git clone https://github.com/your-username/pixel-phantoms-website.git
+   ```
+3. Create a feature branch:
+
+   ```bash
+   git checkout -b feature-name
+   ```
+4. Commit your work:
+
+   ```bash
+   git commit -m "Add: short feature description"
+   ```
+5. Push your branch:
+
+   ```bash
+   git push origin feature-name
+   ```
+6. Submit a Pull Request 🎉
+
+👉 Detailed contribution guidelines -> [`CONTRIBUTING.md`](CONTRIBUTING.md)
+
 ---
+
 <details>
 
-<summary><h2>📁 Project Structure</h2></summary>
+<summary>
+  <h2> 📁 Project Structure</h2>
+  <p>Click to view the project structure</p>
+</summary>
 
 
 ```
@@ -148,11 +195,11 @@ pixel-phantoms-website/
 ```
 </details>
 
----
-
-## 🎨 Screenshot / Demo
-
-Here are some screenshots of the Pixel Phantoms website:
+<details>
+<summary>
+  <h2> 🎨 Screenshot / Demo</h2>
+  <p>Click to view screenshots of the Pixel Phantoms website</p>
+</summary>
 
 ### Home Page
 <img src='assets/demo.png'/>
@@ -163,54 +210,7 @@ Here are some screenshots of the Pixel Phantoms website:
 ### Host Event
 <img width='450px' src='assets/host-event.jpg'/>
 
----
-
-## 🤝 How to Contribute
-
-We welcome **all contributions** — design updates, animations, UI fixes, new pages, and more.
-
-### ✔ Before you start:
-
-* Create an **Issue**
-* Wait for the admin to **assign** it
-* Start contributing 🚀
-
-### 📌 Contribution Steps
-
-1. Fork the repository
-2. Clone your fork:
-
-   ```bash
-   git clone https://github.com/your-username/pixel-phantoms-website.git
-   ```
-3. Create a feature branch:
-
-   ```bash
-   git checkout -b feature-name
-   ```
-4. Commit your work:
-
-   ```bash
-   git commit -m "Add: short feature description"
-   ```
-5. Push your branch:
-
-   ```bash
-   git push origin feature-name
-   ```
-6. Submit a Pull Request 🎉
-
-👉 Detailed contribution guidelines -> [`CONTRIBUTING.md`](CONTRIBUTING.md)
-
----
-
-## 🛠 Tech Stack
-
-**Frontend:** <img width='20px' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" /> HTML5 / 
-            <img width='20px' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" /> CSS3 / 
-            <img width='20px' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />JavaScript
-
-**Optional Add-ons:** Bootstrap / AOS Animations / jQuery / API Integrations
+</details>
 
 ---
 
@@ -241,7 +241,9 @@ See the full license in the [`LICENSE`](LICENSE) file.
 ---
 <details>
 
-<summary><h2> 🧑‍💻 Core Committee — 2024–25</h2>
+<summary>
+  <h2>🧑‍💻 Core Committee</h2>
+  <p>Click to view the committee for the batch 2024-25</p>
 </summary>
 
 * **Director:** Prathamesh Wamane
