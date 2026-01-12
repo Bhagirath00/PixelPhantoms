@@ -41,11 +41,39 @@ const corsOrigin = getCorsOrigin();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-  origin: corsOrigin,
-  credentials: true,
-}));
 
+const allowedOrigins = process.env.CORS_ORIGINS
+  ? process.env.CORS_ORIGINS.split(',').map(origin => origin.trim()).filter(Boolean)
+  : [];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (e.g., mobile apps, curl, server-to-server)
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const env = process.env.NODE_ENV || 'development';
+
+    // If specific origins are configured, only allow those
+    if (allowedOrigins.length > 0) {
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error('Origin not allowed by CORS configuration'), false);
+    }
+
+    // No CORS_ORIGINS configured: in development, allow all; otherwise, fail closed
+    if (env === 'development') {
+      return callback(null, true);
+    }
+
+    return callback(new Error('CORS_ORIGINS must be set in production environments'), false);
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 // Health check route
 app.get('/health', (req, res) => {
   res.status(200).json({ 
