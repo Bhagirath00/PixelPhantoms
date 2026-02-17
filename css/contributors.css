@@ -1397,47 +1397,6 @@ body.light-mode .heatmap-cell.future-cell {
   color: #cd7f32;
 }
 
-/* --- ACTIVITY LIST --- */
-.activity-container {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 20px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 60px;
-}
-
-.activity-item {
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid var(--border-color);
-  gap: 15px;
-}
-
-.activity-item:last-child {
-  border-bottom: none;
-}
-
-.activity-marker {
-  width: 10px;
-  height: 10px;
-  background: var(--accent-color);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.commit-msg {
-  flex-grow: 1;
-  color: var(--text-primary);
-  font-size: 0.95rem;
-}
-
-.commit-date {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
 /* --- STEPS TO CONTRIBUTE --- */
 .steps-grid {
   display: grid;
@@ -2593,68 +2552,6 @@ body.dark-mode .calendar .contrib-legend .legend {
   transform: translateX(-50%);
 }
 
-.activity-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  border-radius: 12px;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid transparent;
-  opacity: 0;
-  transform: translateX(-30px);
-  animation: slideFadeIn 0.5s forwards;
-  animation-delay: 0.2s; /* will override per item */
-}
-
-/* Slide & fade-in animation */
-@keyframes slideFadeIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: translateX(-50%) scale(1);
-  }
-}
-
-
-@keyframes pulse-dot {
-  0%, 100% {
-    opacity: 0.5;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.6);
-  }
-}
-
-/* ---------- Step Number ---------- */
-.step-number {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 30px;
-  height: 30px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: #fff;
-  border-radius: 50%;
-  font-weight: 800;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
 /* ---------- Icon ---------- */
 .step-icon {
   font-size: 2rem;
@@ -2808,205 +2705,146 @@ body.dark-mode .calendar .contrib-legend .legend {
   transform: none !important;
 }
 
-/* Activity Feed Container */
+/* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
+.main-content,
+.page-transition-wrapper,
+.contributors-section {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ===============================
+   ACTIVITY FEED 
+================================ */
+
+/* Container */
 #activity-list {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* spacing between items */
-
+  gap: 16px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Activity Item Card */
-.activity-item {
+/* Card */
+#activity-list .activity-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  gap: 16px;
+
+  padding: 18px 24px;
   border-radius: 14px;
-  background-color: #ffffff; /* white theme */
-  border: 1px solid #e5e7eb; /* subtle border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+
+  /* animation */
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateX(-30px);
   animation: slideFadeIn 0.5s forwards;
 }
 
-/* Slide & fade-in */
+/* Slide animation */
 @keyframes slideFadeIn {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-/* Staggered animation */
+/* Stagger */
 .activity-item:nth-child(1) { animation-delay: 0.1s; }
 .activity-item:nth-child(2) { animation-delay: 0.25s; }
 .activity-item:nth-child(3) { animation-delay: 0.4s; }
 
-/* Hover effect */
+/* Hover */
 .activity-item:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  border-color: #3b82f6;
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* Marker / Bullet */
-.activity-marker.bullet {
+/* Bullet */
+.activity-marker {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: #3b82f6; /* blue accent */
-  margin-right: 14px;
+  background: var(--accent-color);
   flex-shrink: 0;
-  transition: all 0.35s ease;
-  box-shadow: 0 0 6px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
 }
 
-/* Marker pulse on hover */
-.activity-item:hover .bullet {
-  transform: scale(1.5);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.3);
-}
-
-/* Commit Message */
+/* Commit message */
 .commit-msg {
   flex: 1;
   margin-right: 16px;
-  color: #111827;
+  color: var(--text-primary);
+  font-size: 0.95rem;
   font-weight: 500;
   transition: transform 0.25s ease;
 }
 
-/* User name accent */
+/* Username */
 .user-name {
-  color: #3b82f6;
+  color: var(--accent-color);
   font-weight: 600;
 }
 
-[data-theme="dark"] {
-  --activity-bg: #1f2937;          /* dark card background */
-  --activity-border: #374151;      /* dark border */
-  --activity-shadow: rgba(0, 0, 0, 0.4); /* stronger shadow */
-  --activity-text: #f9fafb;        /* main text */
-  --activity-text-secondary: #9ca3af; /* secondary text/date */
-  --activity-accent: #3b82f6;      /* accent color */
+/* Date */
+.commit-date {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: color 0.25s ease;
 }
 
-/* Micro-bounce on hover */
+/* Hover effects */
 .activity-item:hover .commit-msg {
   transform: translateY(-2px);
 }
 
-/* Commit date */
-.commit-date {
-  color: #6b7280;
-  font-size: 0.875rem;
-  transition: color 0.25s ease;
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .roadmap-step,
-  .step-node,
-  .step-icon,
-  .road-dashes,
-  .step-node::before {
-    transition: none !important;
-    animation: none !important;
-/* Highlight date on hover */
 .activity-item:hover .commit-date {
-  color: #3b82f6;
+  color: var(--accent-color);
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  #activity-list {
-    padding: 12px;
-  }
+/* Container wrapper */
+.activity-container {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 60px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
   .activity-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
-  }
-  .commit-date {
-    font-size: 0.8rem;
+    gap: 8px;
   }
 }
 
-/* --- REPO EMPTY SPECIFIC STYLES --- */
-.repo-empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 15px;
-  text-align: center;
-  border: 1px dashed var(--border-color);
-  border-radius: 16px;
-  background: rgba(var(--accent-color-rgb), 0.02);
-  margin: 10px 0;
-  transition: all 0.3s ease;
-}
 
-.repo-empty-state i {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 15px;
-  opacity: 0.6;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 163, 0.2));
-}
-
-.repo-empty-state p {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.repo-empty-state span {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  max-width: 250px;
-  line-height: 1.4;
-}
-
-.repo-empty-state:hover {
-  border-color: var(--accent-color);
-  background: rgba(var(--accent-color-rgb), 0.05);
-  transform: translateY(-2px);
-}
-
-body.light-mode .repo-empty-state {
-  background: #f1f5f9;
-  border-style: solid;
-}
-
-body.light-mode .repo-empty-state i {
-  opacity: 0.8;
+/* ===============================
+   DARK THEME OVERRIDES
+==================================*/
 [data-theme="dark"] #activity-list .activity-item {
-  background-color: var(--activity-bg);
-  border: 1px solid var(--activity-border);
-  box-shadow: 0 4px 12px var(--activity-shadow);
-  color: var(--activity-text);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
 }
 
 [data-theme="dark"] #activity-list .activity-item:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-  border-color: var(--activity-accent);
-  background-color: #111827; /* slightly darker hover */
 }
 
-[data-theme="dark"] #activity-list .activity-marker.bullet {
-  background-color: var(--activity-accent);
+[data-theme="dark"] #activity-list .activity-marker {
   box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
 }
 
