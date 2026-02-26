@@ -1,0 +1,37 @@
+[
+  {
+    "id": "comm_01",
+    "title": "Neon_Cyber_Clock",
+    "description": "A single-file high-visibility neon digital clock with system synchronization.",
+    "folder": "project_1",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_02",
+    "title": "Matrix_Digital_Rain",
+    "description": "A high-performance falling code animation utilizing HTML5 Canvas and system characters.",
+    "folder": "project_2",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_03",
+    "title": "Cyber_Password_Vault",
+    "description": "A secure, single-file password generation utility with custom entropy protocols and strength analysis.",
+    "folder": "project_3",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_04",
+    "title": "Cyber_Task_Sentinel",
+    "description": "A persistent task management interface with local storage integration and terminal-style interactions.",
+    "folder": "project_4",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_05",
+    "title": "Base64_Transcoder",
+    "description": "A terminal-ready utility for encoding and decoding Base64 data streams with instant validation.",
+    "folder": "project_5",
+    "file": "index.html"
+  }
+]
