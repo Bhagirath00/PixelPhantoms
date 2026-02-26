@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Phantoms | Cyber Task Sentinel PRO</title>
+    <title>Pixel Phantoms | Task Sentinel V4</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --neon-pink: #ff0055;
             --neon-blue: #00d2ff;
+            --neon-amber: #ffaa00;
             --neon-green: #00ff88;
-            --bg-dark: #05060a;
-            --terminal-bg: rgba(10, 11, 16, 0.95);
-            --glitch-speed: 3s;
+            --bg-dark: #08090c;
+            --terminal-bg: rgba(13, 14, 19, 0.98);
         }
 
-        /* Base & Background Effects */
+        /* Scanline & Background */
         body {
             background: var(--bg-dark);
             color: #e0f7ff;
@@ -26,118 +26,88 @@
             min-height: 100vh;
             margin: 0;
             overflow: hidden;
-            background-image: 
-                radial-gradient(circle at 50% 50%, #1a1b26 0%, transparent 100%),
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 100%, 100% 4px, 3px 100%;
-        }
-
-        /* CRT Scanline Animation */
-        body::before {
-            content: " ";
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
-            z-index: 200;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
+            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                              linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 2px 100%;
         }
 
         .terminal-container {
             position: relative;
-            width: 90%;
-            max-width: 650px;
+            width: 95%;
+            max-width: 700px;
             background: var(--terminal-bg);
             border: 1px solid var(--neon-blue);
-            padding: 25px;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.15), inset 0 0 15px rgba(0, 210, 255, 0.05);
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%);
+            padding: 30px;
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.1);
+            border-radius: 4px;
         }
 
-        /* Header & Glitch Effect */
+        /* UI Header */
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--neon-pink);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            align-items: flex-end;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
 
-        .title {
+        .title-block h2 {
+            margin: 0;
             color: var(--neon-pink);
-            font-weight: bold;
-            font-size: 1.4rem;
-            text-shadow: 2px 2px var(--bg-dark), 0 0 10px var(--neon-pink);
-            animation: glitch var(--glitch-speed) infinite;
+            letter-spacing: 3px;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px var(--neon-pink);
         }
 
-        @keyframes glitch {
-            0% { transform: skew(0deg); }
-            1% { transform: skew(10deg); filter: hue-rotate(90deg); }
-            2% { transform: skew(-10deg); }
-            3% { transform: skew(0deg); }
-        }
+        /* Integrity Meter */
+        .meter-wrap { margin-bottom: 25px; }
+        .meter-label { font-size: 0.65rem; color: #555; display: flex; justify-content: space-between; }
+        .meter-bar { height: 2px; background: #1a1a1a; width: 100%; margin-top: 5px; }
+        #progress { height: 100%; background: var(--neon-green); width: 0%; transition: 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
 
-        /* Integrity Bar */
-        .integrity-section {
-            margin-bottom: 20px;
-            font-size: 0.7rem;
-        }
-        .integrity-bar {
-            height: 4px;
-            background: #222;
-            width: 100%;
-            margin-top: 5px;
-            position: relative;
-        }
-        #progress {
-            height: 100%;
-            background: var(--neon-green);
-            width: 0%;
-            transition: width 0.5s ease;
-            box-shadow: 0 0 10px var(--neon-green);
-        }
-
-        /* Input Controls */
-        .input-group {
+        /* Multi-Function Input Group */
+        .input-area {
             display: grid;
             grid-template-columns: 1fr auto auto;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 15px;
+            border: 1px dashed #333;
         }
 
         input, select {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
+            background: #000;
+            border: 1px solid #333;
+            color: #fff;
             padding: 12px;
             font-family: inherit;
             outline: none;
+            transition: 0.3s;
         }
 
-        .btn-add {
+        input:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0, 210, 255, 0.2); }
+
+        .btn-main {
             background: var(--neon-blue);
             color: #000;
             border: none;
-            padding: 0 25px;
-            font-weight: 800;
+            padding: 0 20px;
+            font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            text-transform: uppercase;
         }
-        .btn-add:hover { background: #fff; box-shadow: 0 0 15px var(--neon-blue); }
 
-        /* Task List Area */
+        .btn-main.editing-mode { background: var(--neon-amber); }
+
+        /* Task List Styling */
         #taskList {
-            max-height: 350px;
+            list-style: none;
+            padding: 0;
+            max-height: 380px;
             overflow-y: auto;
-            padding-right: 5px;
         }
-
-        #taskList::-webkit-scrollbar { width: 4px; }
-        #taskList::-webkit-scrollbar-thumb { background: var(--neon-blue); }
 
         li {
             background: rgba(255, 255, 255, 0.03);
@@ -146,47 +116,46 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-left: 4px solid var(--neon-blue);
-            transition: 0.3s;
+            border-left: 4px solid #444;
+            animation: slideIn 0.3s ease-out;
         }
 
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } }
+
+        /* Priority Colors */
         li.priority-HIGH { border-left-color: var(--neon-pink); }
-        li.completed {
-            opacity: 0.4;
-            filter: grayscale(1);
-            border-left-color: #444;
-        }
+        li.priority-MID { border-left-color: var(--neon-amber); }
+        li.priority-LOW { border-left-color: var(--neon-blue); }
 
-        .task-info .timestamp {
-            display: block;
-            font-size: 0.6rem;
-            color: #666;
-            margin-top: 4px;
-        }
+        li.completed { opacity: 0.3; filter: grayscale(1); }
 
-        /* Actions */
+        .task-content strong { font-size: 0.7rem; margin-right: 10px; }
+        .task-content span { color: #ccc; }
+
+        /* Action Buttons */
+        .actions { display: flex; gap: 8px; }
         .actions button {
-            background: transparent;
-            border: 1px solid #444;
-            color: #888;
+            background: none;
+            border: 1px solid #333;
+            color: #666;
+            font-size: 0.65rem;
+            padding: 4px 8px;
             cursor: pointer;
-            padding: 4px 10px;
-            margin-left: 5px;
-            font-size: 0.7rem;
             transition: 0.2s;
         }
-        .actions .done:hover { border-color: var(--neon-green); color: var(--neon-green); }
-        .actions .delete:hover { border-color: var(--neon-pink); color: var(--neon-pink); }
 
-        /* System Logs */
-        .system-logs {
+        .actions .btn-done:hover { color: var(--neon-green); border-color: var(--neon-green); }
+        .actions .btn-edit:hover { color: var(--neon-amber); border-color: var(--neon-amber); }
+        .actions .btn-del:hover { color: var(--neon-pink); border-color: var(--neon-pink); }
+
+        /* Bottom Status */
+        .sys-log {
             margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #222;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #444;
-            height: 40px;
-            overflow: hidden;
+            height: 20px;
+            border-top: 1px solid #222;
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -194,134 +163,148 @@
 
 <div class="terminal-container">
     <div class="header">
-        <div class="title">> TASK_SENTINEL_v3.0</div>
-        <div style="font-size: 0.7rem; color: var(--neon-blue)">UPLINK: ACTIVE</div>
+        <div class="title-block">
+            <h2>> SENTINEL_V4</h2>
+            <div style="font-size: 0.6rem; color: #444;">ENCRYPTION: RSA_4096_ENABLED</div>
+        </div>
+        <div id="clock" style="font-size: 0.8rem; color: var(--neon-blue);">00:00:00</div>
     </div>
 
-    <div class="integrity-section">
-        CORE_INTEGRITY: <span id="percent">0%</span>
-        <div class="integrity-bar"><div id="progress"></div></div>
+    <div class="meter-wrap">
+        <div class="meter-label">
+            <span>DIRECTIVE_COMPLETION</span>
+            <span id="percent">0%</span>
+        </div>
+        <div class="meter-bar"><div id="progress"></div></div>
     </div>
-    
-    <div class="input-group">
-        <input type="text" id="taskInput" placeholder="Enter system directive..." autocomplete="off">
+
+    <div class="input-area">
+        <input type="text" id="taskInput" placeholder="Initialize new directive..." autocomplete="off">
         <select id="priority">
-            <option value="LOW">LOW</option>
-            <option value="MID" selected>MID</option>
             <option value="HIGH">HIGH</option>
+            <option value="MID" selected>MID</option>
+            <option value="LOW">LOW</option>
         </select>
-        <button class="btn-add" onclick="addTask()">EXECUTE</button>
+        <button id="addBtn" class="btn-main" onclick="handleTaskAction()">Execute</button>
     </div>
 
     <ul id="taskList"></ul>
 
-    <div class="system-logs" id="logs">
-        [SYSTEM] Awaiting input directives...
+    <div class="sys-log" id="sysLog">
+        [SYS] Core systems nominal. Awaiting command...
     </div>
 </div>
 
 <script>
     /**
-     * STATE MANAGEMENT
+     * APP STATE
      */
-    let tasks = JSON.parse(localStorage.getItem('sentinel_pro_tasks')) || [];
+    let tasks = JSON.parse(localStorage.getItem('sentinel_v4_data')) || [];
+    let editIndex = null;
 
-    const elements = {
-        list: document.getElementById('taskList'),
-        input: document.getElementById('taskInput'),
-        priority: document.getElementById('priority'),
-        progress: document.getElementById('progress'),
-        percent: document.getElementById('percent'),
-        logs: document.getElementById('logs')
-    };
+    const input = document.getElementById('taskInput');
+    const priority = document.getElementById('priority');
+    const addBtn = document.getElementById('addBtn');
+    const log = document.getElementById('sysLog');
 
     /**
-     * CORE FUNCTIONS
+     * CORE LOGIC
      */
-    function updateUI() {
-        elements.list.innerHTML = '';
-        
+    function render() {
+        const list = document.getElementById('taskList');
+        list.innerHTML = '';
+
         tasks.forEach((task, index) => {
             const li = document.createElement('li');
             li.className = `priority-${task.priority} ${task.completed ? 'completed' : ''}`;
             
             li.innerHTML = `
-                <div class="task-info">
-                    <strong>[${task.priority}]</strong> ${task.text}
-                    <span class="timestamp">INITIALIZED: ${task.date}</span>
+                <div class="task-content">
+                    <strong>[${task.priority}]</strong>
+                    <span>${task.text}</span>
                 </div>
                 <div class="actions">
-                    <button class="done" onclick="toggleTask(${index})">RESOLVE</button>
-                    <button class="delete" onclick="deleteTask(${index})">PURGE</button>
+                    <button class="btn-done" onclick="toggleTask(${index})">LOG</button>
+                    <button class="btn-edit" onclick="startEdit(${index})">EDIT</button>
+                    <button class="btn-del" onclick="deleteTask(${index})">PURGE</button>
                 </div>
             `;
-            elements.list.appendChild(li);
+            list.appendChild(li);
         });
 
-        calculateProgress();
-        localStorage.setItem('sentinel_pro_tasks', JSON.stringify(tasks));
+        updateProgress();
+        localStorage.setItem('sentinel_v4_data', JSON.stringify(tasks));
     }
 
-    function addTask() {
-        const val = elements.input.value.trim();
-        if (!val) {
-            logMessage("[ERROR] Null input detected. Operation aborted.");
-            return;
+    function handleTaskAction() {
+        const text = input.value.trim();
+        if (!text) return updateLog("[ERR] Cannot execute empty directive.");
+
+        if (editIndex !== null) {
+            // Update existing
+            tasks[editIndex].text = text;
+            tasks[editIndex].priority = priority.value;
+            updateLog(`[UPD] Directive ${editIndex} modified successfully.`);
+            editIndex = null;
+            addBtn.innerText = "Execute";
+            addBtn.classList.remove('editing-mode');
+        } else {
+            // Add new
+            tasks.unshift({ text, priority: priority.value, completed: false });
+            updateLog(`[NEW] Directive injected into stream.`);
         }
 
-        const newTask = {
-            text: val,
-            priority: elements.priority.value,
-            completed: false,
-            date: new Date().toLocaleTimeString()
-        };
+        input.value = '';
+        render();
+    }
 
-        tasks.unshift(newTask); // New tasks at top
-        elements.input.value = '';
-        logMessage(`[SUCCESS] Directive "${val}" injected into core.`);
-        updateUI();
+    function startEdit(index) {
+        editIndex = index;
+        const task = tasks[index];
+        input.value = task.text;
+        priority.value = task.priority;
+        addBtn.innerText = "Update";
+        addBtn.classList.add('editing-mode');
+        input.focus();
+        updateLog(`[MOD] Editing directive ${index}...`);
     }
 
     function toggleTask(index) {
         tasks[index].completed = !tasks[index].completed;
-        const status = tasks[index].completed ? "RESOLVED" : "RE-ACTIVATED";
-        logMessage(`[UPDATE] Task ${index} state changed to: ${status}`);
-        updateUI();
+        render();
     }
 
     function deleteTask(index) {
-        logMessage(`[WARNING] Purging record ${index} from local database...`);
         tasks.splice(index, 1);
-        updateUI();
+        updateLog(`[DEL] Directive purged from memory.`);
+        render();
     }
 
-    function calculateProgress() {
-        if (tasks.length === 0) {
-            elements.progress.style.width = '0%';
-            elements.percent.innerText = '0%';
-            return;
-        }
-        const completed = tasks.filter(t => t.completed).length;
-        const calc = Math.round((completed / tasks.length) * 100);
-        elements.progress.style.width = calc + '%';
-        elements.percent.innerText = calc + '%';
+    /**
+     * UI UTILITIES
+     */
+    function updateProgress() {
+        const total = tasks.length;
+        const done = tasks.filter(t => t.completed).length;
+        const p = total === 0 ? 0 : Math.round((done / total) * 100);
+        document.getElementById('progress').style.width = p + '%';
+        document.getElementById('percent').innerText = p + '%';
     }
 
-    function logMessage(msg) {
-        const time = new Date().toLocaleTimeString([], {hour12: false});
-        elements.logs.innerHTML = `<div>[${time}] ${msg}</div>` + elements.logs.innerHTML;
+    function updateLog(msg) {
+        log.innerText = `> ${msg}`;
     }
 
-    // Keyboard Listeners
-    elements.input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') addTask();
-    });
+    // Time handling
+    setInterval(() => {
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+    }, 1000);
 
-    // Initial Boot
-    window.onload = () => {
-        logMessage("[SYSTEM] Pixel Phantom Task Sentinel v3.0 online.");
-        updateUI();
-    };
+    // Enter Key
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleTaskAction(); });
+
+    // Initial load
+    render();
 </script>
 </body>
 </html>
