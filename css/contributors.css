@@ -335,6 +335,7 @@
   padding: 0 40px;
 }
 
+
 #top-contributors {
   text-align: center;
   width: 100%;
@@ -3061,4 +3062,5 @@ body.dark-mode .calendar .contrib-legend .legend {
 .roadmap-container .roadmap-step:hover {
   transform: translateY(0) !important;
  
+
 }

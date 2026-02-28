@@ -56,6 +56,85 @@
       <!-- CONTENT -->
       <section class="policy-content" aria-labelledby="policy-title">
         <div class="policy-container">
+          <div class="guidelines-grid">
+
+  <!-- Card 1 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-handshake"></i> Our Commitment</h3>
+    <p>
+      We, as contributors and maintainers, pledge to make participation in our project a
+      harassment-free experience for everyone, regardless of age, body size, visible or
+      invisible disability, ethnicity, sex characteristics, gender identity and expression,
+      level of experience, education, socio-economic status, nationality, personal appearance,
+      race, religion, or sexual identity and orientation.
+    </p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-star"></i> Our Standards</h3>
+    <p>Examples of behavior that contribute to a positive environment include:</p>
+    <ul>
+      <li>Being respectful and considerate</li>
+      <li>Using welcoming and inclusive language</li>
+      <li>Giving constructive feedback</li>
+      <li>Focusing on what is best for the community</li>
+      <li>Showing empathy towards others</li>
+    </ul>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-ban"></i> Unacceptable Behavior</h3>
+    <ul>
+      <li>Harassment, insults, or personal attacks</li>
+      <li>Trolling or creating a hostile environment</li>
+      <li>Publishing others’ private information without permission</li>
+      <li>Discriminatory comments or actions</li>
+      <li>Disruptive or aggressive behavior</li>
+    </ul>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-user-shield"></i> Our Responsibilities</h3>
+    <ul>
+      <li>Clarifying standards of acceptable behavior</li>
+      <li>Taking appropriate action in response to unacceptable behavior</li>
+      <li>Removing or rejecting contributions that violate this Code of Conduct</li>
+      <li>Temporarily or permanently banning contributors for severe violations</li>
+    </ul>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-globe"></i> Scope</h3>
+    <ul>
+      <li>Within all project-related spaces</li>
+      <li>In public spaces when representing the project or its community</li>
+    </ul>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-gavel"></i> Enforcement Guidelines</h3>
+    <ol>
+      <li><strong>Warning</strong> – Verbal or written warning for minor violations.</li>
+      <li><strong>Temporary Ban</strong> – Temporary removal from interactions.</li>
+      <li><strong>Permanent Ban</strong> – Severe or repeated violations.</li>
+    </ol>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="guideline-card">
+    <h3><i class="fas fa-book"></i> Attribution</h3>
+    <p>
+      This Code of Conduct is adapted from the
+      <strong>Contributor Covenant</strong>, version 2.1.
+    </p>
+  </div>
+
+</div>
           <h2 id="commitment-heading">Our Commitment</h2>
           <p>
             We, as contributors and maintainers, pledge to make participation in our project a
@@ -129,5 +208,25 @@
     <script src="../js/cursor-effect.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/scroll-progress.js"></script>
+    <script>
+  const cards = document.querySelectorAll('.guideline-card');
+
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    cards.forEach((card, index) => {
+      const cardTop = card.getBoundingClientRect().top;
+
+      if (cardTop < triggerBottom) {
+        setTimeout(() => {
+          card.classList.add('show');
+        }, index * 100); // stagger animation
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
   </body>
 </html>
