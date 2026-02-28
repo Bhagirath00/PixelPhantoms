@@ -143,8 +143,8 @@ function loadMockData() {
   ];
 
   originalContributorsData = [...contributorsData]; // ⭐ ADD THIS
-setupSorting(); // ⭐ ADD THIS
-renderContributors(1);
+  setupSorting(); // ⭐ ADD THIS
+  renderContributors(1);
 
   // 4. Global Activity Heatmap (Mock)
   loadMockHeatmap();
@@ -257,19 +257,19 @@ function processData(repoData, contributors, pulls, totalCommits) {
     .sort((a, b) => b.points - a.points);
 
   updateGlobalStats(
-  contributorsData.length,
-  totalProjectPRs,
-  totalProjectPoints,
-  repoData.stargazers_count,
-  repoData.forks_count,
-  totalCommits
-);
+    contributorsData.length,
+    totalProjectPRs,
+    totalProjectPoints,
+    repoData.stargazers_count,
+    repoData.forks_count,
+    totalCommits
+  );
 
-// ⭐ ADD THESE 2 LINES (CRITICAL)
-originalContributorsData = [...contributorsData];
-setupSorting();
+  // ⭐ ADD THESE 2 LINES (CRITICAL)
+  originalContributorsData = [...contributorsData];
+  setupSorting();
 
-renderContributors(1);
+  renderContributors(1);
 }
 
 // =========================================================
@@ -781,20 +781,20 @@ async function fetchRecentActivity() {
     if (activityList) {
       activityList.innerHTML = '';
       commits.forEach(item => {
-  const message = item.commit.message.toLowerCase();
-  const date = new Date(item.commit.author.date).toLocaleDateString();
+        const message = item.commit.message.toLowerCase();
+        const date = new Date(item.commit.author.date).toLocaleDateString();
 
-  // Detect activity type for visual hierarchy
-  let type = 'commit';
-  if (message.includes('merge')) type = 'merge';
-  else if (message.includes('fix')) type = 'fix';
-  else if (message.includes('feat')) type = 'feat';
+        // Detect activity type for visual hierarchy
+        let type = 'commit';
+        if (message.includes('merge')) type = 'merge';
+        else if (message.includes('fix')) type = 'fix';
+        else if (message.includes('feat')) type = 'feat';
 
-  const row = document.createElement('div');
-  row.className = 'activity-item';
-  row.setAttribute('data-type', type);
+        const row = document.createElement('div');
+        row.className = 'activity-item';
+        row.setAttribute('data-type', type);
 
-  row.innerHTML = `
+        row.innerHTML = `
     <div class="activity-marker"></div>
     <div class="commit-msg">
       <span style="color: var(--accent-color); font-weight:600;">
@@ -806,13 +806,12 @@ async function fetchRecentActivity() {
     <div class="commit-date">${date}</div>
   `;
 
-  activityList.appendChild(row);
-});
+        activityList.appendChild(row);
+      });
     }
   } catch (error) {
     console.log('Activity feed unavailable');
   }
-  } catch (error) { console.log('Activity feed unavailable'); }
 }
 
 // =================================================================
@@ -897,17 +896,6 @@ async function fetchGitHubStats(username) {
 
     console.log(`✅ Fetched fresh stats for ${username}:`, stats);
     return stats;
-      html_url: userData.html_url || `https://github.com/${username}`
-    };
-
-    // Cache the result
-    localStorage.setItem(cacheKey, JSON.stringify({
-      data: stats,
-      timestamp: Date.now()
-    }));
-
-    console.log(`✅ Fetched fresh stats for ${username}:`, stats);
-    return stats;
 
   } catch (error) {
     console.error(`Error fetching stats for ${username}:`, error);
@@ -964,22 +952,6 @@ async function fetchRecentRepos(username) {
       }
       return [];
     }
-    }
-  }
-
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=3`
-    );
-
-    // Handle rate limiting
-    if (response.status === 403) {
-      if (cached) {
-        const { data } = JSON.parse(cached);
-        return data;
-      }
-      return [];
-    }
 
     if (!response.ok) {
       return [];
@@ -1007,17 +979,6 @@ async function fetchRecentRepos(username) {
     );
 
     return repoData;
-      updated_at: repo.updated_at
-    }));
-
-    // Cache the result
-    localStorage.setItem(cacheKey, JSON.stringify({
-      data: repoData,
-      timestamp: Date.now()
-    }));
-
-    return repoData;
-
   } catch (error) {
     console.error(`Error fetching repos for ${username}:`, error);
 
@@ -1281,8 +1242,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* =========================
-   Contributors Sorting Logic (Safe)
+// =========================
+// Contributors Sorting Logic (Safe)
 function setupSorting() {
   const sortSelect = document.getElementById("contributors-sort");
 
