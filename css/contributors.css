@@ -321,31 +321,33 @@
 .top-contributors {
   width: 100%;
   margin: 150px auto 80px auto;
-<<<<<<< HEAD
 }
 
 
 
-=======
+}
+
+
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
   padding: 0 40px;
 }
 
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
 #top-contributors {
   text-align: center;
   width: 100%;
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 
 
 
 =======
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
+
+
+
 .contributor-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
@@ -1009,7 +1011,6 @@ body.light-mode .heatmap-cell.future-cell {
   color: var(--accent-color);
 }
 
-<<<<<<< HEAD
 
 /* --- CONTRIBUTORS GRID --- */
 /* --- CONTRIBUTORS GRID (OPTIMIZED FOR 5 CARDS PER ROW) --- */
@@ -1031,11 +1032,9 @@ body.light-mode .heatmap-cell.future-cell {
   /* REMOVE max-width: 500px; */
   max-width: 100%; /* or just delete the max-width line */
 
-=======
 /* Base Card Style */
 .contributor-card {
   width: 100%;
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 32px;
@@ -1046,13 +1045,11 @@ body.light-mode .heatmap-cell.future-cell {
   box-shadow: var(--shadow-main);
   box-sizing: border-box;
   transition: transform 0.3s ease;
-<<<<<<< HEAD
 
   /* CHANGE THIS */
   margin: 0; /* instead of margin: 0 auto */
 
 =======
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
   cursor: pointer;
   gap: 16px;
   position: relative;
@@ -2013,7 +2010,6 @@ body.dark-mode .repo-item {
 }
 
 @media (min-width: 1028px) and (max-width: 1444px) {
-<<<<<<< HEAD
   .contributors-grid {
     grid-template-columns: repeat(4, 1fr); /* was 3 → now 4 */
     gap: 20px;
@@ -2021,7 +2017,6 @@ body.dark-mode .repo-item {
   }
 
 =======
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
   .contributors-section {
     padding: 50px 32px;
   }
@@ -2366,14 +2361,6 @@ body.dark-mode .calendar .contrib-legend .legend {
   top: 15%;
 }
 
-.roadmap-step:hover {
-  transform: translateY(-15px) scale(1.05);
-  z-index: 20;
-}
-
-.roadmap-step:nth-child(4):hover {
-  transform: translateX(-50%) translateY(-15px) scale(1.05);
-}
 
 /* Step Node - Circular markers */
 .step-node {
@@ -2754,15 +2741,15 @@ body.dark-mode .calendar .contrib-legend .legend {
   outline-offset: 6px;
 }
 
-<<<<<<< HEAD
   .roadmap-step:hover {
     transform: none !important;
   }
-=======
+  .roadmap-step:hover {
+    transform: none !important;
+  }
 .roadmap-step:hover {
   transform: none !important;
 }
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
 
 /* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
 .main-content,
@@ -2927,7 +2914,6 @@ body.dark-mode .calendar .contrib-legend .legend {
 [data-theme="dark"] #activity-list .activity-item:hover .commit-date {
   color: var(--activity-accent);
 }
-<<<<<<< HEAD
 /* ===== Contributors Search (Non-intrusive) ===== */
 .contributors-search-wrapper {
   width: 100%;
@@ -2957,7 +2943,6 @@ body.dark-mode .calendar .contrib-legend .legend {
 
 /* =========================
    Recent Activity Enhancement
-========================= */
 
 .activity-header {
   display: flex;
@@ -3046,7 +3031,6 @@ body.dark-mode .calendar .contrib-legend .legend {
   outline: none;
   border-color: #4f9cff;
   box-shadow: 0 0 0 2px rgba(79, 156, 255, 0.15);
-=======
 
 /* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
 .main-content,
@@ -3054,5 +3038,15 @@ body.dark-mode .calendar .contrib-legend .legend {
 .contributors-section {
   width: 100% !important;
   max-width: 100% !important;
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
+
+}
+
+/* This targets the specific middle step and forces it to stay put */
+.roadmap-container .roadmap-step:nth-child(4):hover {
+  transform: translateX(-50%) !important;
+}
+
+/* This stops the other steps from moving */
+.roadmap-container .roadmap-step:hover {
+  transform: translateY(0) !important;
 }
