@@ -335,6 +335,7 @@
   padding: 0 40px;
 }
 
+
 #top-contributors {
   text-align: center;
   width: 100%;
@@ -344,7 +345,6 @@
 
 
 
-=======
 
 
 
@@ -1050,7 +1050,7 @@ body.light-mode .heatmap-cell.future-cell {
   /* CHANGE THIS */
   margin: 0; /* instead of margin: 0 auto */
 
-=======
+
   cursor: pointer;
   gap: 16px;
   position: relative;
@@ -3050,4 +3050,5 @@ body.dark-mode .calendar .contrib-legend .legend {
 /* This stops the other steps from moving */
 .roadmap-container .roadmap-step:hover {
   transform: translateY(0) !important;
+
 }
