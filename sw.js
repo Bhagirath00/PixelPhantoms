@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pixel-phantoms-v1';
+const CACHE_NAME = 'pixel-phantoms-v14';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -7,9 +7,11 @@ const ASSETS_TO_CACHE = [
     './events.html',
     './pages/join-us.html',
     './pages/projects.html',
+    './pages/contributors.html',
     './assets/logo_compressed.png',
     './manifest.json',
     './css/style.min.css',
+    './css/contributors.css',
     './css/back-to-top.css',
     './css/animations.css',
     './css/share-button.css',
