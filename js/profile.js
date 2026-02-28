@@ -310,3 +310,48 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%c🎮 PIXEL PHANTOMS - Profile Loaded', 'color: #00aaff; font-size: 16px; font-weight: bold;');
     console.log('%c👤 Agent: ' + currentUser, 'color: #00ff88; font-size: 14px;');
 });
+
+
+/* =========================================
+   PERFORMANCE METRICS DATA (Fix #859)
+   ========================================= */
+
+function loadPerformanceMetrics() {
+  // You can later replace with real API/localStorage data
+  const xp = 4800;
+  const rank = 3;
+  const streak = 7;
+  const contributions = 12;
+
+  // Update UI
+  const xpEl = document.getElementById("metric-xp");
+  const rankEl = document.getElementById("metric-rank");
+  const streakEl = document.getElementById("metric-streak");
+  const scoreEl = document.getElementById("metric-score");
+  const engagementEl = document.getElementById("metric-engagement");
+  const xpBar = document.getElementById("xp-progress");
+  const scoreBar = document.getElementById("score-progress");
+
+  if (!xpEl) return;
+
+  xpEl.textContent = xp.toLocaleString();
+  rankEl.textContent = `#${rank}`;
+  streakEl.textContent = `${streak} days`;
+  scoreEl.textContent = contributions;
+
+  // Progress visuals
+  xpBar.style.width = Math.min(xp / 10000 * 100, 100) + "%";
+  scoreBar.style.width = Math.min(contributions / 50 * 100, 100) + "%";
+
+  // Engagement logic
+  if (contributions > 20) {
+    engagementEl.textContent = "High";
+  } else if (contributions > 8) {
+    engagementEl.textContent = "Medium";
+  } else {
+    engagementEl.textContent = "Low";
+  }
+}
+
+// Call after profile loads
+document.addEventListener("DOMContentLoaded", loadPerformanceMetrics);
