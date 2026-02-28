@@ -5,8 +5,9 @@ const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 
 // State
 let contributorsData = [];
+let originalContributorsData = []; // ⭐ ADD THIS (for default sorting restore)
 let currentPage = 1;
-const itemsPerPage = 3;
+const itemsPerPage = 5;
 
 // Point System Weights
 const POINTS = {
@@ -141,6 +142,8 @@ function loadMockData() {
     },
   ];
 
+  originalContributorsData = [...contributorsData]; // ⭐ ADD THIS
+  setupSorting(); // ⭐ ADD THIS
   renderContributors(1);
 
   // 4. Global Activity Heatmap (Mock)
@@ -261,6 +264,11 @@ function processData(repoData, contributors, pulls, totalCommits) {
     repoData.forks_count,
     totalCommits
   );
+
+  // ⭐ ADD THESE 2 LINES (CRITICAL)
+  originalContributorsData = [...contributorsData];
+  setupSorting();
+
   renderContributors(1);
 }
 
@@ -773,21 +781,37 @@ async function fetchRecentActivity() {
     if (activityList) {
       activityList.innerHTML = '';
       commits.forEach(item => {
+        const message = item.commit.message.toLowerCase();
         const date = new Date(item.commit.author.date).toLocaleDateString();
+
+        // Detect activity type for visual hierarchy
+        let type = 'commit';
+        if (message.includes('merge')) type = 'merge';
+        else if (message.includes('fix')) type = 'fix';
+        else if (message.includes('feat')) type = 'feat';
+
         const row = document.createElement('div');
         row.className = 'activity-item';
+        row.setAttribute('data-type', type);
+
         row.innerHTML = `
-                    <div class="activity-marker"></div>
-                    <div class="commit-msg"><span style="color: var(--accent-color)">${item.commit.author.name}</span>: ${item.commit.message}</div>
-                    <div class="commit-date">${date}</div>
-                `;
+    <div class="activity-marker"></div>
+    <div class="commit-msg">
+      <span style="color: var(--accent-color); font-weight:600;">
+        ${item.commit.author.name}
+      </span>
+      • <span class="activity-badge">${type.toUpperCase()}</span>
+      : ${item.commit.message}
+    </div>
+    <div class="commit-date">${date}</div>
+  `;
+
         activityList.appendChild(row);
       });
     }
   } catch (error) {
     console.log('Activity feed unavailable');
   }
-  } catch (error) { console.log('Activity feed unavailable'); }
 }
 
 // =================================================================
@@ -872,17 +896,6 @@ async function fetchGitHubStats(username) {
 
     console.log(`✅ Fetched fresh stats for ${username}:`, stats);
     return stats;
-      html_url: userData.html_url || `https://github.com/${username}`
-    };
-
-    // Cache the result
-    localStorage.setItem(cacheKey, JSON.stringify({
-      data: stats,
-      timestamp: Date.now()
-    }));
-
-    console.log(`✅ Fetched fresh stats for ${username}:`, stats);
-    return stats;
 
   } catch (error) {
     console.error(`Error fetching stats for ${username}:`, error);
@@ -939,22 +952,6 @@ async function fetchRecentRepos(username) {
       }
       return [];
     }
-    }
-  }
-
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=3`
-    );
-
-    // Handle rate limiting
-    if (response.status === 403) {
-      if (cached) {
-        const { data } = JSON.parse(cached);
-        return data;
-      }
-      return [];
-    }
 
     if (!response.ok) {
       return [];
@@ -982,17 +979,6 @@ async function fetchRecentRepos(username) {
     );
 
     return repoData;
-      updated_at: repo.updated_at
-    }));
-
-    // Cache the result
-    localStorage.setItem(cacheKey, JSON.stringify({
-      data: repoData,
-      timestamp: Date.now()
-    }));
-
-    return repoData;
-
   } catch (error) {
     console.error(`Error fetching repos for ${username}:`, error);
 
@@ -1205,5 +1191,104 @@ function initGitHubIntegrations() {
   }
 }
 
+
+/* =========================
+   Search Contributors (Enhancement Only)
+   Does NOT modify existing rendering
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("contributors-search");
+  const grid = document.getElementById("contributors-grid");
+
+  if (!searchInput || !grid) return;
+
+  searchInput.addEventListener("input", function () {
+    const query = this.value.toLowerCase().trim();
+    const cards = grid.children;
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+
+      // Get searchable text (username + any text inside card)
+      const text = card.textContent.toLowerCase();
+
+      if (text.includes(query)) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    }
+  });
+});
+
+// Activity Filter Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const filter = document.getElementById("activity-filter");
+  const activityList = document.getElementById("activity-list");
+
+  if (!filter || !activityList) return;
+
+  filter.addEventListener("change", () => {
+    const type = filter.value;
+    const items = activityList.querySelectorAll(".activity-item");
+
+    items.forEach(item => {
+      if (type === "all" || item.dataset.type === type) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+});
+
+// =========================
+// Contributors Sorting Logic (Safe)
+function setupSorting() {
+  const sortSelect = document.getElementById("contributors-sort");
+
+  // If dropdown not present, safely exit
+  if (!sortSelect) return;
+
+  sortSelect.addEventListener("change", () => {
+    // Prevent sorting before data loads
+    if (!contributorsData || contributorsData.length === 0) return;
+
+    const value = sortSelect.value;
+
+    // Restore original order
+    if (value === "default") {
+      contributorsData = [...originalContributorsData];
+    }
+
+    // Sort by Points (High → Low)
+    else if (value === "points") {
+      contributorsData.sort((a, b) => (b.points || 0) - (a.points || 0));
+    }
+
+    // Sort by PRs (High → Low)
+    else if (value === "prs") {
+      contributorsData.sort((a, b) => (b.prs || 0) - (a.prs || 0));
+    }
+
+    // Sort by Contributions (fallback metric)
+    else if (value === "contributions") {
+      contributorsData.sort((a, b) => (b.contributions || 0) - (a.contributions || 0));
+    }
+
+    // Reset to page 1 after sorting
+    currentPage = 1;
+    renderContributors(1);
+
+    // Smooth scroll to contributors section
+    const section = document.getElementById("top-contributors");
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+  });
+}
 // Note: initGitHubIntegrations is now called from renderContributors()
 // This ensures it runs AFTER the cards are rendered

@@ -2201,3 +2201,8 @@ textarea.hud-input::placeholder {
     display: none;
   }
 }
+
+.export-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

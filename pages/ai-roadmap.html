@@ -1,425 +1,608 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixel Phantoms | AI & ML Protocol</title>
-  <link rel="icon" href="../assets/logo.png" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/ai-roadmap.css" />
-  <link rel="stylesheet" href="../css/python-road.css" />
-  <link rel="stylesheet" href="../css/home-gsap.min.css" />
-  <link rel="stylesheet" href="../css/style.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-</head>
+  <body class="hacker-theme">
+    <div id="navbar-placeholder"></div>
+    <script src="../js/navbar.js" defer></script>
 
-<body class="hacker-theme">
-  <div id="navbar-placeholder"></div>
-  <script src="../js/navbar.js"></script>
-  <script>
-    renderNavbar('../');
-  </script>
+    <main class="main-content">
+     <section class="ai-intro-section">
+  <div class="ai-intro-container">
 
-  <section id="ai-intro" class="intro-section" style="padding-top: 120px;">
-    <div class="container">
-      <div class="intro-left">
-        <h2 class="section-title">Artificial Intelligence & Machine Learning</h2>
-        <p class="section-desc">
-          Embark on the journey to master AI. Learn everything from basic math and data manipulation to advanced deep learning architectures and Large Language Models.
-        </p>
-        <ul class="steps-list">
-          <li class="step-item">
-            <span class="step-icon">🧮</span>
-            Math & Data Foundations
-          </li>
-          <li class="step-item">
-            <span class="step-icon">🤖</span>
-            Machine Learning Algorithms
-          </li>
-          <li class="step-item">
-            <span class="step-icon">🧠</span>
-            Deep Learning & Generative AI
-          </li>
-        </ul>
-        <a href="#roadmap-start" class="btn-primary">Initialize Protocol</a>
-      </div>
+    <!-- Hero Block -->
+    <div class="ai-intro-hero">
+      <span class="ai-badge">🚀 AI/ML Roadmap</span>
+      <h2 class="ai-title">
+        Introduction to <span class="gradient-text">Artificial Intelligence</span>
+      </h2>
+      <p class="ai-subtitle">
+        Build intelligent systems. Learn Machine Learning. Shape the future with Deep Learning.
+      </p>
 
-      <div class="intro-right">
-        <div class="animation-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/4616/4616238.png" alt="Robot Artificial Intelligence"
-            class="floating-img ai-img">
-          
-          <div class="floating-circle circle1"></div>
-          <div class="floating-circle circle2"></div>
-          <div class="floating-circle circle3"></div>
-        </div>
+      <div class="ai-cta">
+        <a href="#ml-fundamentals" class="btn-primary">Start Learning</a>
+        <a href="#career-paths" class="btn-secondary">Explore Careers</a>
       </div>
     </div>
-  </section>
 
-  <div class="roadmap-wrapper" id="roadmap-start">
-  
-    <section class="roadmap-section">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 1</span>
-        <h2>Mathematical & Python Foundations</h2>
+    <!-- Feature Cards -->
+    <div class="ai-intro-grid">
+
+      <div class="ai-card">
+        <div class="ai-icon">🤖</div>
+        <h3>What is AI, ML & DL?</h3>
         <p>
-          Before training intelligent models, you must understand the mathematical language of AI and the programming tools to execute it.
+          AI enables machines to simulate intelligence. ML allows systems to learn from data.
+          Deep Learning uses neural networks to model complex patterns.
         </p>
       </div>
-  
-      <div class="roadmap-grid">
-        <div class="roadmap-card">
-          <h3>🐍 <a href="python-road.html" style="color: inherit; text-decoration: none;">Python Programming <i class="fas fa-link" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Master the standard language of AI. Focus on object-oriented programming (OOP), list comprehensions, and memory efficiency to write scalable training scripts.
-          </p>
-        </div>
-  
-        <div class="roadmap-card">
-          <h3>📐 <a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" style="color: inherit; text-decoration: none;">Linear Algebra <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The core mechanics of deep learning. Understand vectors, matrices, dot products, and multi-dimensional arrays (Tensors) used to represent data.
-          </p>
-        </div>
-  
-        <div class="roadmap-card">
-          <h3>📈 <a href="https://www.3blue1brown.com/topics/calculus" target="_blank" style="color: inherit; text-decoration: none;">Calculus (Derivatives) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Calculus explains how models "learn". Master partial derivatives, gradients, and the chain rule to understand backpropagation and loss optimization.
-          </p>
-        </div>
-  
-        <div class="roadmap-card highlight">
-          <h3>📊 <a href="https://statquest.org/" target="_blank" style="color: inherit; text-decoration: none;">Statistics & Probability <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            AI is heavily reliant on reasoning under uncertainty. Grasp probability distributions, Bayes' Theorem, hypothesis testing, and standard deviation.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section js-deep-dive">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 2</span>
-        <h2>Data Analysis & Visualization Stack</h2>
+
+      <div class="ai-card">
+        <div class="ai-icon">🌍</div>
+        <h3>Real-World Applications</h3>
         <p>
-          AI models are only as good as the data you feed them. Master the essential libraries used to clean, parse, and visualize datasets before modeling.
+          AI powers recommendation systems, self-driving cars, chatbots, fraud detection,
+          medical diagnosis, computer vision & more.
         </p>
       </div>
-  
-      <div class="js-grid">
-        <div class="js-card">
-          <span class="js-tag">Processing</span>
-          <h3>🔢 <a href="https://numpy.org/" target="_blank" style="color: inherit; text-decoration: none;">NumPy <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            High-performance scientific computing. NumPy provides C-optimized multi-dimensional arrays for lightning-fast mathematical operations.
-          </p>
-        </div>
-  
-        <div class="js-card">
-          <span class="js-tag">Wrangling</span>
-          <h3>🐼 <a href="https://pandas.pydata.org/" target="_blank" style="color: inherit; text-decoration: none;">Pandas <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The industry standard for data manipulation. Master DataFrames to handle missing values, merge massive datasets, and engineer robust features.
-          </p>
-        </div>
-  
-        <div class="js-card">
-          <span class="js-tag">Visuals</span>
-          <h3>📉 <a href="https://matplotlib.org/" target="_blank" style="color: inherit; text-decoration: none;">Matplotlib <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The foundational plotting library. Create line graphs, scatter plots, and histograms to understand data trends and model loss curves.
-          </p>
-        </div>
-  
-        <div class="js-card highlight">
-          <span class="js-tag">Insights</span>
-          <h3>🎨 <a href="https://seaborn.pydata.org/" target="_blank" style="color: inherit; text-decoration: none;">Seaborn <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Built on top of Matplotlib, Seaborn generates beautiful, complex statistical graphics like correlation heatmaps and distribution plots with minimal code.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section react-fundamentals">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 3</span>
-        <h2>Core Machine Learning (<a href="https://scikit-learn.org/stable/" target="_blank" style="color: inherit; text-decoration: underline;">Scikit-Learn</a>)</h2>
+
+      <div class="ai-card">
+        <div class="ai-icon">💼</div>
+        <h3>Career Paths</h3>
         <p>
-          Learn classical algorithms before diving into deep learning. Scikit-Learn is the premier library for building foundational, highly-interpretable models.
+          ML Engineer, Data Scientist, AI Researcher, NLP Engineer,
+          Computer Vision Engineer, AI Product Developer.
         </p>
       </div>
-  
-      <div class="react-grid">
-        <div class="react-card intro">
-          <h3>🎯 <a href="https://scikit-learn.org/stable/supervised_learning.html" target="_blank" style="color: inherit; text-decoration: none;">Supervised Learning <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Train models on labeled datasets. Learn to predict continuous numbers (Regression) and categorize data into discrete classes (Classification).
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>📏 <a href="https://scikit-learn.org/stable/modules/linear_model.html" target="_blank" style="color: inherit; text-decoration: none;">Linear & Logistic Regression <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The simplest yet most fundamental algorithms. Use Linear for price predictions and Logistic for binary classification (e.g., spam detection).
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🌳 <a href="https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees" target="_blank" style="color: inherit; text-decoration: none;">Decision Trees & Forests <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Tree-based models that split data based on features. Random Forests aggregate hundreds of trees to prevent overfitting and boost accuracy.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>⚔️ <a href="https://scikit-learn.org/stable/modules/svm.html" target="_blank" style="color: inherit; text-decoration: none;">Support Vector Machines <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Powerful algorithms that find the optimal hyper-plane to separate complex, high-dimensional datasets into distinct classes.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🕵️ <a href="https://scikit-learn.org/stable/unsupervised_learning.html" target="_blank" style="color: inherit; text-decoration: none;">Unsupervised Learning <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Algorithms that discover hidden structures in unlabeled data. Crucial for customer segmentation and exploratory data analysis.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🧩 <a href="https://scikit-learn.org/stable/modules/clustering.html#k-means" target="_blank" style="color: inherit; text-decoration: none;">K-Means Clustering <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Automatically group similar data points into 'K' distinct clusters without any prior human labeling or guidance.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🔽 <a href="https://scikit-learn.org/stable/modules/decomposition.html#pca" target="_blank" style="color: inherit; text-decoration: none;">Dimensionality (PCA) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Principal Component Analysis (PCA) reduces complex data with hundreds of features down to the most important variables, speeding up training.
-          </p>
-        </div>
-  
-        <div class="react-card highlight">
-          <h3>💯 <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" style="color: inherit; text-decoration: none;">Model Evaluation <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Don't just train—evaluate. Master Cross-Validation, Confusion Matrices, Precision, Recall, and the F1-Score to truly measure model performance.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section react-hooks">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 4</span>
-        <h2>Deep Learning Architectures</h2>
+
+      <div class="ai-card">
+        <div class="ai-icon">🧠</div>
+        <h3>Mindset & Expectations</h3>
         <p>
-          Venture into Artificial Neural Networks (ANNs). Learn the frameworks and network structures that power computer vision, speech recognition, and modern AI.
+          Strong math foundations, patience with debugging, continuous learning,
+          and hands-on project building are key to success.
         </p>
       </div>
-  
-      <div class="hooks-grid">
-        <div class="hook-card essential">
-          <span class="hook-level">Framework</span>
-          <h3>🟧 <a href="https://www.tensorflow.org/" target="_blank" style="color: inherit; text-decoration: none;">TensorFlow & Keras <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Google's robust, production-ready ecosystem for building and deploying deep neural networks at massive scale.
-          </p>
-        </div>
-  
-        <div class="hook-card essential">
-          <span class="hook-level">Framework</span>
-          <h3>🔥 <a href="https://pytorch.org/" target="_blank" style="color: inherit; text-decoration: none;">PyTorch <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Meta's dynamic, Pythonic deep learning library. Heavily favored in AI research and rapidly becoming the industry standard.
-          </p>
-        </div>
-  
-        <div class="hook-card">
-          <span class="hook-level">Vision</span>
-          <h3>👁️ <a href="https://cs231n.github.io/" target="_blank" style="color: inherit; text-decoration: none;">Convolutional NNs (CNNs) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Networks that use spatial convolutions to process grid-like data. Essential for image classification, facial recognition, and object detection.
-          </p>
-        </div>
-  
-        <div class="hook-card">
-          <span class="hook-level">Sequence</span>
-          <h3>🔁 <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" style="color: inherit; text-decoration: none;">Recurrent NNs (RNN) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Networks with internal memory loops designed to process sequential data like time-series financial forecasting, speech, and basic text.
-          </p>
-        </div>
-  
-        <div class="hook-card optimization">
-          <span class="hook-level">Mechanics</span>
-          <h3>⚡ <a href="https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html" target="_blank" style="color: inherit; text-decoration: none;">Activation Functions <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The mathematical gates (ReLU, Sigmoid, Softmax) that introduce non-linearity, allowing networks to learn complex patterns.
-          </p>
-        </div>
-  
-        <div class="hook-card optimization">
-          <span class="hook-level">Mechanics</span>
-          <h3>⚙️ <a href="https://keras.io/api/optimizers/" target="_blank" style="color: inherit; text-decoration: none;">Optimizers & Loss <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Learn how algorithms like Adam and SGD minimize the 'Loss Function' to adjust network weights and improve accuracy during training.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section react-api">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 5</span>
-        <h2>Generative AI & LLMs</h2>
-        <p>
-          The absolute bleeding edge of artificial intelligence. Master the architectures that allow machines to generate text, images, and code.
-        </p>
-      </div>
-  
-      <div class="api-grid">
-        <div class="api-card core">
-          <h3>🤖 <a href="https://huggingface.co/docs/transformers/index" target="_blank" style="color: inherit; text-decoration: none;">Transformers <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The breakthrough "Attention Is All You Need" architecture that abandoned RNNs in favor of Self-Attention, powering all modern LLMs.
-          </p>
-        </div>
-  
-        <div class="api-card core">
-          <h3>💬 <a href="https://huggingface.co/models" target="_blank" style="color: inherit; text-decoration: none;">Large Language Models <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Deep dive into models like GPT, Llama, and Claude. Understand tokenization, prompt engineering, and context windows.
-          </p>
-        </div>
-  
-        <div class="api-card">
-          <h3>📚 <a href="https://www.promptingguide.ai/techniques/rag" target="_blank" style="color: inherit; text-decoration: none;">RAG (Retrieval-Augmented) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Connect LLMs to external databases and documents to prevent hallucinations and generate answers based on your private data.
-          </p>
-        </div>
-  
-        <div class="api-card warning">
-          <h3>🔧 <a href="https://huggingface.co/docs/peft/index" target="_blank" style="color: inherit; text-decoration: none;">Fine-Tuning (LoRA) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Learn cost-effective methods to retrain massive foundational models on your specific datasets without needing a supercomputer.
-          </p>
-        </div>
-  
-        <div class="api-card highlight">
-          <h3>
-            🔗 <a href="https://python.langchain.com/" target="_blank" style="color: inherit; text-decoration: none;">LangChain <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a>
-          </h3>
-          <p>
-            The orchestration frameworks used to chain together prompts, memory, agents, and external APIs to build autonomous AI applications.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section projects-section">
-      <div class="roadmap-header">
-        <span class="roadmap-badge critical">Step 6 • Critical</span>
-        <h2>Projects That Prove Your Skills</h2>
-        <p>
-          The only way to truly master AI is by building. These projects take you from basic data cleaning to deploying full AI applications.
-        </p>
-      </div>
-  
-      <div class="projects-grid">
-        <article class="project-card basic">
-          <h3>🏠 Housing Price Predictor</h3>
-          <ul>
-            <li>Pandas data cleaning</li>
-            <li>Scikit-Learn Random Forests</li>
-            <li>Feature engineering</li>
-          </ul>
-          <span class="level">Beginner</span>
-        </article>
-  
-        <article class="project-card basic">
-          <h3>👥 Customer Segmentation</h3>
-          <ul>
-            <li>Unsupervised learning</li>
-            <li>K-Means Clustering</li>
-            <li>Seaborn data visualization</li>
-          </ul>
-          <span class="level">Beginner</span>
-        </article>
-  
-        <article class="project-card intermediate">
-          <h3>🩻 Pneumonia X-Ray Detector</h3>
-          <ul>
-            <li>PyTorch or TensorFlow</li>
-            <li>CNN Architecture implementation</li>
-            <li>Medical image preprocessing</li>
-          </ul>
-          <span class="level">Intermediate</span>
-        </article>
-  
-        <article class="project-card intermediate">
-          <h3>😊 Sentiment Analysis API</h3>
-          <ul>
-            <li>Natural Language Processing</li>
-            <li><a href="https://flask.palletsprojects.com/" target="_blank" style="color: inherit; text-decoration: underline;">Flask</a> / <a href="https://fastapi.tiangolo.com/" target="_blank" style="color: inherit; text-decoration: underline;">FastAPI</a></li>
-            <li>RNNs or Naive Bayes</li>
-          </ul>
-          <span class="level">Intermediate</span>
-        </article>
-  
-        <article class="project-card advanced">
-          <h3>📄 Custom PDF Chatbot</h3>
-          <ul>
-            <li>LangChain & <a href="https://www.pinecone.io/learn/vector-database/" target="_blank" style="color: inherit; text-decoration: underline;">Vector Databases</a></li>
-            <li><a href="https://platform.openai.com/docs/" target="_blank" style="color: inherit; text-decoration: underline;">OpenAI</a> / HuggingFace APIs</li>
-            <li>Semantic document retrieval</li>
-          </ul>
-          <span class="level">Advanced</span>
-        </article>
-  
-        <article class="project-card advanced glow">
-          <h3>🌐 Autonomous Web Agent</h3>
-          <ul>
-            <li>LLM function calling</li>
-            <li>Web scraping automation</li>
-            <li>Multi-agent orchestration</li>
-          </ul>
-          <span class="level">Advanced</span>
-        </article>
-      </div>
-    </section>
-  
+
+    </div>
+
   </div>
+</section>
+<section class="foundation-section">
+  <div class="foundation-container">
 
-  <div id="footer-placeholder"></div>
-  <script src="../js/footer.js"></script>
-  <script>
-    renderFooter('../');
-  </script>
+    <!-- LEFT CONTENT -->
+    <div class="foundation-left">
+      <span class="foundation-badge">📚 Step 1</span>
+      <h2 class="foundation-title">
+        Prerequisites <span class="gradient-text">(Foundations)</span>
+      </h2>
+      <p class="foundation-subtitle">
+        Before diving into Machine Learning, build strong fundamentals.
+        These core skills will make your AI journey smoother and more powerful.
+      </p>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="../js/theme-enhanced.js"></script>
-  <script src="../js/ai-roadmap.js"></script>
-  <script>
-    // Simple Theme Toggle
-    const toggleBtn = document.querySelector('#theme-toggle');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      });
-    }
-  </script>
-</body>
+      <div class="foundation-line"></div>
+    </div>
 
+    <!-- RIGHT CONTENT -->
+    <div class="foundation-right">
+
+      <div class="foundation-card">
+        <div class="foundation-icon">📐</div>
+        <div>
+          <h3>Basic Mathematics</h3>
+          <p>Linear Algebra, Probability, and Statistics are essential to understand ML models and optimization.</p>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <div class="foundation-icon">🐍</div>
+        <div>
+          <h3>Python Programming</h3>
+          <p>Learn Python syntax, OOP basics, and libraries like NumPy & Pandas for data manipulation.</p>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <div class="foundation-icon">💻</div>
+        <div>
+          <h3>Data Structures & Algorithms</h3>
+          <p>Understand arrays, stacks, queues, trees, and time complexity fundamentals.</p>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <div class="foundation-icon">🔧</div>
+        <div>
+          <h3>Git & Version Control</h3>
+          <p>Track projects, collaborate efficiently, and maintain clean development workflows.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="python-section">
+  <div class="python-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="python-left">
+      <span class="python-badge">🐍 Step 2</span>
+      <h2 class="python-title">
+        Python for <span class="gradient-text">AI / ML</span>
+      </h2>
+      <p class="python-subtitle">
+        Master the essential Python tools used in Machine Learning,
+        data analysis, visualization, and experimentation workflows.
+      </p>
+    </div>
+
+    <!-- RIGHT STACK GRID -->
+    <div class="python-stack">
+
+      <div class="python-card">
+        <h3>NumPy</h3>
+        <p>Efficient numerical computing with arrays, matrices, and vectorized operations.</p>
+      </div>
+
+      <div class="python-card">
+        <h3>Pandas</h3>
+        <p>Data manipulation, cleaning, filtering, and structured data analysis.</p>
+      </div>
+
+      <div class="python-card">
+        <h3>Matplotlib / Seaborn</h3>
+        <p>Powerful data visualization libraries for graphs, charts, and insights.</p>
+      </div>
+
+      <div class="python-card">
+        <h3>Jupyter Notebook</h3>
+        <p>Interactive coding environment for experiments, visualization, and storytelling.</p>
+      </div>
+
+      <div class="python-card">
+        <h3>Virtual Environments</h3>
+        <p>Manage dependencies and isolate project environments professionally.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="data-section">
+  <div class="data-container">
+
+    <!-- HEADER -->
+    <div class="data-header">
+      <span class="data-badge">📊 Step 3</span>
+      <h2 class="data-title">
+        Data Handling & <span class="gradient-text">Preprocessing</span>
+      </h2>
+      <p class="data-subtitle">
+        Raw data is messy. Transform it into structured, meaningful input
+        before training machine learning models.
+      </p>
+    </div>
+
+    <!-- PIPELINE FLOW -->
+    <div class="data-pipeline">
+
+      <div class="data-step">
+        <div class="data-circle">1</div>
+        <h3>Data Cleaning</h3>
+        <p>Remove duplicates, fix inconsistencies, and clean noisy data.</p>
+      </div>
+
+      <div class="data-step">
+        <div class="data-circle">2</div>
+        <h3>Handling Missing Values</h3>
+        <p>Fill, drop, or impute missing data strategically.</p>
+      </div>
+
+      <div class="data-step">
+        <div class="data-circle">3</div>
+        <h3>Feature Engineering</h3>
+        <p>Create meaningful features that improve model performance.</p>
+      </div>
+
+      <div class="data-step">
+        <div class="data-circle">4</div>
+        <h3>Feature Scaling</h3>
+        <p>Normalize or standardize data for better optimization.</p>
+      </div>
+
+      <div class="data-step">
+        <div class="data-circle">5</div>
+        <h3>Train-Test Split</h3>
+        <p>Divide data for unbiased model evaluation.</p>
+      </div>
+
+      <div class="data-step">
+        <div class="data-circle">6</div>
+        <h3>Exploratory Data Analysis</h3>
+        <p>Visualize and analyze patterns before modeling.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="ml-section">
+  <div class="ml-container">
+
+    <!-- HEADER -->
+    <div class="ml-header">
+      <span class="ml-badge">🧠 Step 4</span>
+      <h2 class="ml-title">
+        Machine Learning <span class="gradient-text">Fundamentals</span>
+      </h2>
+      <p class="ml-subtitle">
+        Understand core ML algorithms and evaluation techniques that power real-world AI systems.
+      </p>
+    </div>
+
+    <!-- TABS -->
+    <div class="ml-tabs">
+      <button class="ml-tab active" data-tab="supervised">Supervised</button>
+      <button class="ml-tab" data-tab="unsupervised">Unsupervised</button>
+      <button class="ml-tab" data-tab="evaluation">Model Evaluation</button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="ml-content">
+
+      <!-- SUPERVISED -->
+      <div class="ml-panel active" id="supervised">
+        <div class="ml-grid">
+          <div class="ml-card">Linear Regression</div>
+          <div class="ml-card">Logistic Regression</div>
+          <div class="ml-card">KNN</div>
+          <div class="ml-card">Decision Trees</div>
+          <div class="ml-card">Random Forest</div>
+        </div>
+      </div>
+
+      <!-- UNSUPERVISED -->
+      <div class="ml-panel" id="unsupervised">
+        <div class="ml-grid">
+          <div class="ml-card">K-Means</div>
+          <div class="ml-card">Hierarchical Clustering</div>
+          <div class="ml-card">PCA</div>
+        </div>
+      </div>
+
+      <!-- EVALUATION -->
+      <div class="ml-panel" id="evaluation">
+        <div class="ml-grid">
+          <div class="ml-card">Accuracy</div>
+          <div class="ml-card">Precision</div>
+          <div class="ml-card">Recall</div>
+          <div class="ml-card">F1 Score</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="dl-section">
+  <div class="dl-container">
+
+    <!-- HEADER -->
+    <div class="dl-header">
+      <span class="dl-badge">🚀 Step 5</span>
+      <h2 class="dl-title">
+        Deep Learning <span class="gradient-text">Architecture</span>
+      </h2>
+      <p class="dl-subtitle">
+        Dive into neural networks, architectures, and frameworks that power modern AI systems.
+      </p>
+    </div>
+
+    <div class="dl-content">
+
+      <!-- LEFT: Neural Visual -->
+      <div class="dl-visual">
+        <div class="neural-network">
+          <div class="layer">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="layer">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="layer">
+            <span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Learning Cards -->
+      <div class="dl-cards">
+
+        <div class="dl-card">
+          <h3>Neural Network Basics</h3>
+          <p>Perceptron, layers, weights, bias, forward propagation.</p>
+        </div>
+
+        <div class="dl-card">
+          <h3>Activation Functions</h3>
+          <p>ReLU, Sigmoid, Tanh, Softmax and non-linearity.</p>
+        </div>
+
+        <div class="dl-card">
+          <h3>Backpropagation</h3>
+          <p>Gradient descent, loss functions, optimization.</p>
+        </div>
+
+        <div class="dl-card">
+          <h3>TensorFlow / PyTorch</h3>
+          <p>Deep learning frameworks & model building.</p>
+        </div>
+
+        <div class="dl-card">
+          <h3>CNN</h3>
+          <p>Convolution, pooling & computer vision models.</p>
+        </div>
+
+        <div class="dl-card">
+          <h3>RNN / LSTM</h3>
+          <p>Sequence modeling & time-series learning.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="spec-section">
+  <div class="spec-container">
+
+    <!-- HEADER -->
+    <div class="spec-header">
+      <span class="spec-badge">🎯 Step 6</span>
+      <h2 class="spec-title">
+        Specializations <span class="gradient-text">(Choose Your Path)</span>
+      </h2>
+      <p class="spec-subtitle">
+        Explore advanced AI domains and pick your career direction.
+      </p>
+    </div>
+
+    <!-- GRID -->
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <div class="spec-icon">🤖</div>
+        <h3>NLP</h3>
+        <p>Text processing, transformers, embeddings, chatbots.</p>
+        <span class="spec-tag">Language AI</span>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">👁</div>
+        <h3>Computer Vision</h3>
+        <p>Image classification, object detection, CNN models.</p>
+        <span class="spec-tag">Visual AI</span>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">📊</div>
+        <h3>Time Series</h3>
+        <p>Forecasting, ARIMA, LSTM prediction models.</p>
+        <span class="spec-tag">Prediction AI</span>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">🎯</div>
+        <h3>Reinforcement Learning</h3>
+        <p>Agents, rewards, Q-learning, policy optimization.</p>
+        <span class="spec-tag">Decision AI</span>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">🧠</div>
+        <h3>Generative AI / LLMs</h3>
+        <p>GPT models, diffusion, prompt engineering.</p>
+        <span class="spec-tag">Creative AI</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="mlops-section">
+  <div class="mlops-container">
+
+    <!-- HEADER -->
+    <div class="mlops-header">
+      <span class="mlops-badge">💻 Step 7</span>
+      <h2 class="mlops-title">
+        MLOps & Deployment
+      </h2>
+      <p class="mlops-subtitle">
+        Learn to deploy, monitor, and scale your ML models like a pro.
+      </p>
+    </div>
+
+    <!-- GRID -->
+    <div class="mlops-grid">
+
+      <div class="mlops-card">
+        <div class="mlops-icon">🚀</div>
+        <h3>Model Deployment</h3>
+        <p>Flask, FastAPI & serving ML models efficiently.</p>
+        <span class="mlops-tag">API Serving</span>
+      </div>
+
+      <div class="mlops-card">
+        <div class="mlops-icon">🐳</div>
+        <h3>Docker Basics</h3>
+        <p>Containerize your models for consistent environments.</p>
+        <span class="mlops-tag">Containers</span>
+      </div>
+
+      <div class="mlops-card">
+        <div class="mlops-icon">🔄</div>
+        <h3>CI/CD Concepts</h3>
+        <p>Automated pipelines for model integration & deployment.</p>
+        <span class="mlops-tag">Automation</span>
+      </div>
+
+      <div class="mlops-card">
+        <div class="mlops-icon">📈</div>
+        <h3>Model Monitoring</h3>
+        <p>Track model performance, drift & reliability in production.</p>
+        <span class="mlops-tag">Monitoring</span>
+      </div>
+
+      <div class="mlops-card">
+        <div class="mlops-icon">☁️</div>
+        <h3>Cloud Platforms</h3>
+        <p>AWS, GCP & Azure for scalable ML deployment.</p>
+        <span class="mlops-tag">Cloud AI</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="projects-section">
+  <div class="projects-container">
+
+    <!-- HEADER -->
+    <div class="projects-header">
+      <span class="projects-badge">📂 Step 8</span>
+      <h2 class="projects-title">Projects & Portfolio</h2>
+      <p class="projects-subtitle">
+        Hands-on projects to strengthen your portfolio and land AI/ML opportunities.
+      </p>
+    </div>
+
+    <!-- GRID -->
+    <div class="projects-grid">
+
+      <div class="projects-card">
+        <div class="projects-icon">🌱</div>
+        <h3>Beginner Projects</h3>
+        <p>Iris Classifier, House Price Prediction</p>
+        <span class="projects-tag beginner">Beginner</span>
+      </div>
+
+      <div class="projects-card">
+        <div class="projects-icon">⚡</div>
+        <h3>Intermediate Projects</h3>
+        <p>Spam Detection, Image Classifier</p>
+        <span class="projects-tag intermediate">Intermediate</span>
+      </div>
+
+      <div class="projects-card">
+        <div class="projects-icon">🔥</div>
+        <h3>Advanced Projects</h3>
+        <p>Chatbot, Recommendation System</p>
+        <span class="projects-tag advanced">Advanced</span>
+      </div>
+
+      <div class="projects-card">
+        <div class="projects-icon">💻</div>
+        <h3>GitHub Portfolio</h3>
+        <p>Organize projects & showcase your code effectively.</p>
+        <span class="projects-tag">Portfolio</span>
+      </div>
+
+      <div class="projects-card">
+        <div class="projects-icon">📝</div>
+        <h3>Resume Building</h3>
+        <p>Highlight AI/ML skills & projects to impress recruiters.</p>
+        <span class="projects-tag">Resume</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="career-section">
+  <div class="career-container">
+
+    <!-- Section Header -->
+    <div class="career-header">
+      <span class="career-step">🔟 Step 9</span>
+      <h2 class="career-title">Interview & Career Preparation</h2>
+      <p class="career-subtitle">
+        Prepare for ML interviews, participate in Kaggle competitions, contribute to open-source, and strengthen your career profile.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="career-grid">
+
+      <!-- Common ML Questions -->
+      <div class="career-card">
+        <div class="career-icon">❓</div>
+        <h3>Common ML Interview Questions</h3>
+        <p>Practice frequently asked questions in machine learning interviews.</p>
+      </div>
+
+      <!-- Case Studies -->
+      <div class="career-card">
+        <div class="career-icon">📊</div>
+        <h3>Case Studies</h3>
+        <p>Analyze real-world scenarios to understand ML system implementation.</p>
+      </div>
+
+      <!-- System Design -->
+      <div class="career-card">
+        <div class="career-icon">🛠️</div>
+        <h3>System Design Basics for ML</h3>
+        <p>Learn scalable ML system architecture and deployment fundamentals.</p>
+      </div>
+
+      <!-- Kaggle Participation -->
+      <div class="career-card">
+        <div class="career-icon">🏆</div>
+        <h3>Kaggle Participation</h3>
+        <p>Compete in ML competitions and showcase your skills on your portfolio.</p>
+      </div>
+
+      <!-- Open Source Contributions -->
+      <div class="career-card">
+        <div class="career-icon">🌐</div>
+        <h3>Open-Source Contributions</h3>
+        <p>Collaborate on projects and gain visibility in the ML community.</p>
+      </div>
+
+      <!-- Certifications -->
+      <div class="career-card">
+        <div class="career-icon">🎓</div>
+        <h3>Certifications (Optional)</h3>
+        <p>Highlight relevant courses to enhance your profile.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/theme-enhanced.js"></script>
+    <script src="../js/ai-roadmap.js"></script>
+
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/footer.js"></script>
+ 
+
+    <script>renderFooter('../');</script>
+  </body>
 </html>

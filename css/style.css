@@ -71,8 +71,8 @@
 [data-theme='dark'] {
   --bg-primary: #0d0f14 !important;
   --text-primary: #ffffff !important;
-  background-color: #0d0f14 !important;
-  color: #ffffff !important;
+  --card-bg: #1a1d25 !important;
+  --text-secondary: #bbbbbb !important;
 }
 
 body.hacker-theme {
@@ -3587,6 +3587,8 @@ code,
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  /* Add explicit containment to prevent lines from drifting out */
+  clip-path: inset(0 0 0 0);
 }
 
 .bolt-emitter {
