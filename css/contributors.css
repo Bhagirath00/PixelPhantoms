@@ -344,6 +344,10 @@
 
 
 
+
+
+
+
 .contributor-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
@@ -1031,6 +1035,7 @@ body.light-mode .heatmap-cell.future-cell {
 /* Base Card Style */
 .contributor-card {
   width: 100%;
+
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 32px;
@@ -3034,6 +3039,7 @@ body.dark-mode .calendar .contrib-legend .legend {
 .contributors-section {
   width: 100% !important;
   max-width: 100% !important;
+
 }
 
 /* This targets the specific middle step and forces it to stay put */
