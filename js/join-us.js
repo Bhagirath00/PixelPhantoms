@@ -110,3 +110,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+/* =========================================
+   FIX #857: Form Submission Feedback System
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("membership-form");
+  const submitBtn = form?.querySelector(".submit-btn");
+  const feedback = document.getElementById("form-feedback");
+
+  if (!form || !submitBtn || !feedback) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // 1. Show loading state
+    submitBtn.disabled = true;
+    submitBtn.querySelector(".text").textContent = "EXECUTING...";
+    feedback.textContent = ">> Processing join protocol...";
+    feedback.style.color = "#00e5ff";
+
+    try {
+      // Simulate processing delay (replace with API later)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // 2. Success message
+      feedback.textContent =
+        ">> SUCCESS: Node registered successfully. Welcome to Pixel Phantoms.";
+      feedback.style.color = "#00ff88";
+
+      // Optional: reset form after success
+      form.reset();
+    } catch (error) {
+      // 3. Error message
+      feedback.textContent =
+        ">> ERROR: Protocol execution failed. Please retry.";
+      feedback.style.color = "#ff4d4d";
+    } finally {
+      // 4. Restore button
+      submitBtn.disabled = false;
+      submitBtn.querySelector(".text").textContent =
+        "EXECUTE_JOIN_PROTOCOL";
+    }
+  });
+});

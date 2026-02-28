@@ -172,3 +172,55 @@
 .hacker-theme .policy-container h3:not(:first-of-type) {
   border-top: 1px solid rgba(255,255,255,0.08);
 }
+
+/* ===============================
+   Card Style Guidelines (Issue #862)
+   =============================== */
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 30px;
+}
+
+.guideline-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #0284c7;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.guideline-card h3 {
+  color: #0284c7;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+}
+
+.guideline-card p,
+.guideline-card li {
+  color: #475569;
+  line-height: 1.7;
+}
+
+.guideline-card ul,
+.guideline-card ol {
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+/* Hover Animation */
+.guideline-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.15);
+}
+
+/* Reveal Animation */
+.guideline-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
