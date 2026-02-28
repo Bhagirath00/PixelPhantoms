@@ -1035,6 +1035,7 @@ body.light-mode .heatmap-cell.future-cell {
 /* Base Card Style */
 .contributor-card {
   width: 100%;
+
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 32px;
