@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Cyber Password Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00d2ff;
+            --neon-green: #00ff88;
+            --bg-dark: #0a0b10;
+            --panel-bg: rgba(20, 20, 30, 0.8);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #e0f7ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background: var(--panel-bg);
+            border: 1px solid var(--neon-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+            position: relative;
+        }
+
+        h2 {
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .result-container {
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            padding: 15px;
+            height: 50px;
+            width: 93%;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+
+        #password { word-break: break-all; }
+
+        .btn-copy {
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+
+        .btn-copy:hover {
+            background: var(--neon-blue);
+            color: #000;
+        }
+
+        .settings { margin-top: 20px; }
+
+        .setting {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        input[type='number'] {
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 5px;
+            width: 50px;
+            font-family: inherit;
+        }
+
+        input[type='checkbox'] {
+            accent-color: var(--neon-blue);
+            cursor: pointer;
+        }
+
+        .btn-generate {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: var(--neon-blue);
+            color: #000;
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-generate:hover {
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        #strength-meter {
+            height: 4px;
+            width: 100%;
+            background: #1a1a1a;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+
+        #strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease, background 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>> VAULT_GENERATOR_v1.0</h2>
+        
+        <div class="result-container">
+            <span id="password">P@$$w0rd</span>
+            <button class="btn-copy" id="copy" title="Copy to Clipboard">COPY</button>
+        </div>
+
+        <div id="strength-meter">
+            <div id="strength-bar"></div>
+        </div>
+
+        <div class="settings">
+            <div class="setting">
+                <label>Entropy Length (8-20)</label>
+                <input type="number" id="length" min="8" max="20" value="12">
+            </div>
+            <div class="setting">
+                <label>Include Uppercase</label>
+                <input type="checkbox" id="uppercase" checked>
+            </div>
+            <div class="setting">
+                <label>Include Numbers</label>
+                <input type="checkbox" id="numbers" checked>
+            </div>
+            <div class="setting">
+                <label>Include Symbols</label>
+                <input type="checkbox" id="symbols" checked>
+            </div>
+        </div>
+
+        <button class="btn-generate" id="generate">RUN_GENERATION_PROTOCOL</button>
+    </div>
+
+    <script>
+        const passwordEl = document.getElementById('password');
+        const lengthEl = document.getElementById('length');
+        const uppercaseEl = document.getElementById('uppercase');
+        const numbersEl = document.getElementById('numbers');
+        const symbolsEl = document.getElementById('symbols');
+        const generateEl = document.getElementById('generate');
+        const copyEl = document.getElementById('copy');
+        const strengthBar = document.getElementById('strength-bar');
+
+        const randomFunc = {
+            lower: () => String.fromCharCode(Math.floor(Math.random() * 26) + 97),
+            upper: () => String.fromCharCode(Math.floor(Math.random() * 26) + 65),
+            number: () => String.fromCharCode(Math.floor(Math.random() * 10) + 48),
+            symbol: () => "!@#$%^&*(){}[]=<>/,.".split('')[Math.floor(Math.random() * 20)]
+        };
+
+        generateEl.addEventListener('click', () => {
+            const length = +lengthEl.value;
+            const hasUpper = uppercaseEl.checked;
+            const hasNumber = numbersEl.checked;
+            const hasSymbol = symbolsEl.checked;
+
+            passwordEl.innerText = generatePassword(hasUpper, hasNumber, hasSymbol, length);
+            updateStrength(length, hasUpper, hasNumber, hasSymbol);
+        });
+
+        copyEl.addEventListener('click', () => {
+            const password = passwordEl.innerText;
+            if (!password) return;
+            navigator.clipboard.writeText(password);
+            const originalText = copyEl.innerText;
+            copyEl.innerText = "COPIED!";
+            setTimeout(() => copyEl.innerText = originalText, 1500);
+        });
+
+        function generatePassword(upper, number, symbol, length) {
+            let generatedPassword = '';
+            const typesCount = 1 + upper + number + symbol;
+            const typesArr = [{ lower: true }, { upper }, { number }, { symbol }].filter(item => Object.values(item)[0]);
+
+            if (typesCount === 0) return '';
+
+            for (let i = 0; i < length; i += typesCount) {
+                typesArr.forEach(type => {
+                    const funcName = Object.keys(type)[0];
+                    generatedPassword += randomFunc[funcName]();
+                });
+            }
+
+            return generatedPassword.slice(0, length);
+        }
+
+        function updateStrength(length, upper, number, symbol) {
+            let strength = 0;
+            if (length > 10) strength += 40;
+            if (upper) strength += 20;
+            if (number) strength += 20;
+            if (symbol) strength += 20;
+
+            strengthBar.style.width = strength + '%';
+            if (strength < 50) strengthBar.style.background = '#ff0055';
+            else if (strength < 80) strengthBar.style.background = '#ffd700';
+            else strengthBar.style.background = '#00ff88';
+        }
+    </script>
+</body>
+</html>
