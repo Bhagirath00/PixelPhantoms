@@ -30,5 +30,13 @@
     "folder": "project_4",
     "file": "index.html"
 
+  },
+  {
+    "id": "comm_05",
+    "title": "Base64_Transcoder",
+    "description": "A terminal-ready utility for encoding and decoding Base64 data streams with instant validation.",
+    "folder": "project_5",
+    "file": "index.html"
+
   }
 ]

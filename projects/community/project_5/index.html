@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Base64 Transcoder</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-yellow: #f7df1e;
+            --bg-dark: #0a0b10;
+            --border-color: rgba(247, 223, 30, 0.3);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #e0f7ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .transcoder-box {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid var(--neon-yellow);
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(247, 223, 30, 0.1);
+        }
+
+        h2 {
+            color: var(--neon-yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .io-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 0.8rem;
+            color: var(--neon-yellow);
+            opacity: 0.8;
+        }
+
+        textarea {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px;
+            font-family: inherit;
+            resize: none;
+            height: 80px;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--neon-yellow);
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid var(--neon-yellow);
+            color: var(--neon-yellow);
+            padding: 10px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: var(--neon-yellow);
+            color: #000;
+            box-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        .status-msg {
+            font-size: 0.7rem;
+            height: 1rem;
+            color: #00ff88;
+            text-align: right;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="transcoder-box">
+    <h2>> BASE64_TRANSCODER_v1.0</h2>
+    
+    <div class="io-group">
+        <label>PLAIN_TEXT_INPUT</label>
+        <textarea id="inputArea" placeholder="Enter string to encode or decode..."></textarea>
+        
+        <div class="actions">
+            <button onclick="process('encode')">ENCODE</button>
+            <button onclick="process('decode')">DECODE</button>
+            <button onclick="clearAll()" style="border-color: #ff0055; color: #ff0055;">CLEAR</button>
+        </div>
+
+        <label>TRANSCODED_OUTPUT</label>
+        <textarea id="outputArea" readonly placeholder="Resulting data stream..."></textarea>
+        <div id="status" class="status-msg"></div>
+        <button onclick="copyOutput()" style="width: 100%; margin-top: 10px;">COPY_RESULT</button>
+    </div>
+</div>
+
+<script>
+    const input = document.getElementById('inputArea');
+    const output = document.getElementById('outputArea');
+    const status = document.getElementById('status');
+
+    function process(mode) {
+        const val = input.value.trim();
+        if (!val) return;
+
+        try {
+            if (mode === 'encode') {
+                output.value = btoa(val);
+                showStatus("STRING_ENCODED_SUCCESSFULLY");
+            } else {
+                output.value = atob(val);
+                showStatus("DATA_DECODED_SUCCESSFULLY");
+            }
+        } catch (e) {
+            output.value = "ERROR: INVALID_INPUT_FORMAT";
+            status.style.color = "#ff0055";
+            showStatus("TRANSCODE_FAILED");
+        }
+    }
+
+    function clearAll() {
+        input.value = '';
+        output.value = '';
+        status.textContent = '';
+    }
+
+    async function copyOutput() {
+        if (!output.value || output.value.startsWith("ERROR")) return;
+        await navigator.clipboard.writeText(output.value);
+        showStatus("COPIED_TO_CLIPBOARD");
+    }
+
+    function showStatus(msg) {
+        status.textContent = `> ${msg}`;
+        status.style.color = msg.includes("FAILED") ? "#ff0055" : "#00ff88";
+        setTimeout(() => { status.textContent = ''; }, 3000);
+    }
+</script>
+</body>
+</html>
