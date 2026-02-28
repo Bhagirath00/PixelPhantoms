@@ -29,6 +29,60 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
+    <link rel="stylesheet" href="css/scroll-progress.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/home-gsap.css" />
+    <link rel="stylesheet" href="css/back-to-top.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/cursor-effect.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/events.css" />
+    <link rel="stylesheet" href="css/keyboard-shortcuts.css" />
+    <style>
+      /* Minimal modal styles that reuse login.css form classes */
+      #register-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+      }
+      #register-modal.show {
+        display: flex;
+      }
+      #register-modal .modal-dialog {
+        max-width: 560px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 14px;
+        position: relative;
+      }
+      #register-modal .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+      #register-modal .register-form .input-group {
+        margin-bottom: 12px;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -386,17 +440,17 @@
                 <i class="fas fa-calendar-alt"></i> View Upcoming Events
               </a>
             </div>
-            <div class="join-stats">
+            <div class="join-stats" id="stats-section">
               <div class="stat-item">
-                <h4>150+</h4>
+                <h4 class="stat-number" data-target="150">0</h4>
                 <p>Active Members</p>
               </div>
               <div class="stat-item">
-                <h4>25+</h4>
+                <h4 class="stat-number" data-target="25">0</h4>
                 <p>Projects Built</p>
               </div>
               <div class="stat-item">
-                <h4>10+</h4>
+                <h4 class="stat-number" data-target="10">0</h4>
                 <p>Hackathons Hosted</p>
               </div>
             </div>
@@ -423,7 +477,6 @@
       }
     });
   </script>
-
   <script src="js/page-transitions.js" defer></script>
   <script src="js/theme.js"></script>
   <script src="js/cursor-effect.js"></script>
@@ -439,4 +492,14 @@
     }
   </script>
 </body>
+
+    <script src="js/page-transitions.js" defer></script>
+    <script src="js/theme.js"></script>
+    <script src="js/cursor-effect.js"></script>
+    <script src="js/back-to-top.js"></script>
+    <script src="js/scroll-progress.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/about.js"></script>
+    <script src="js/keyboard-shortcuts.js"></script>
+  </body>
 </html>
