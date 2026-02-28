@@ -1024,6 +1024,8 @@ body.light-mode .motto-subtitle {
   width: 100%;
 }
 
+/* Match Home page footer container width */
+#footer-placeholder footer .container,
 #footer-placeholder footer .container {
   max-width: 1200px !important;
   margin: 0 auto !important;
@@ -1037,4 +1039,6 @@ body.light-mode .motto-subtitle {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  box-sizing: border-box;
 }
+
