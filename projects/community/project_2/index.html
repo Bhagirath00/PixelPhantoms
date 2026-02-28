@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Advanced Matrix Stream</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --matrix-color: #00ff88;
+            --matrix-glow: rgba(0, 255, 136, 0.5);
+            --bg-dark: #050505;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        canvas {
+            display: block;
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* UI Overlays */
+        .overlay {
+            position: absolute;
+            padding: 25px;
+            color: var(--matrix-color);
+            pointer-events: none;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .top-left { top: 0; left: 0; }
+        .bottom-right { bottom: 0; right: 0; font-size: 0.7rem; opacity: 0.6; }
+
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--matrix-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--matrix-color);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.2); }
+        }
+
+        /* Terminal Log Simulation */
+        #log-container {
+            font-size: 0.75rem;
+            max-width: 300px;
+            height: 100px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column-reverse;
+            mask-image: linear-gradient(to top, black 70%, transparent 100%);
+        }
+
+        .log-entry {
+            margin: 2px 0;
+            text-shadow: 0 0 5px var(--matrix-glow);
+        }
+
+        /* Controls Hint */
+        .hint {
+            margin-top: 15px;
+            font-size: 0.6rem;
+            color: #fff;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay top-left">
+        <div class="status-bar">
+            <div class="pulse-dot"></div>
+            <strong>System: Pixel_Phantoms_v2</strong>
+        </div>
+        <div id="log-container">
+            </div>
+        <div class="hint">CLICK TO REBOOT INTERFACE</div>
+    </div>
+
+    <div class="overlay bottom-right">
+        SECURE CONNECTION: AES-256-GCM<br>
+        LOCATION: [REDACTED]<br>
+        LATENCY: <span id="ping">24</span>ms
+    </div>
+
+    <canvas id="matrix"></canvas>
+
+    <script>
+        /**
+         * CONFIGURATION & CONSTANTS
+         */
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        const logContainer = document.getElementById('log-container');
+        const pingDisplay = document.getElementById('ping');
+
+        const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
+        const FONT_SIZE = 18;
+        let columns = 0;
+        let symbols = [];
+
+        /**
+         * SYMBOL CLASS
+         * Handles individual character streams
+         */
+        class Symbol {
+            constructor(x, y, fontSize, canvasHeight) {
+                this.characters = CHARS;
+                this.x = x;
+                this.y = y;
+                this.fontSize = fontSize;
+                this.canvasHeight = canvasHeight;
+                this.text = '';
+                this.speed = Math.random() * 3 + 2; // Varying speeds for depth
+                this.switchInterval = Math.round(Math.random() * 10 + 5);
+                this.counter = 0;
+            }
+
+            draw(context) {
+                // Randomly flicker the character
+                if (this.counter % this.switchInterval === 0) {
+                    this.text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
+                }
+
+                // Draw the character
+                // Note: The leading character is white/bright
+                context.fillStyle = '#fff'; 
+                context.shadowBlur = 10;
+                context.shadowColor = '#00ff88';
+                context.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
+
+                // Reset shadow for the rest of the stream
+                context.shadowBlur = 0;
+                context.fillStyle = '#00ff88';
+                
+                // Move down
+                this.y += 1;
+
+                // Reset if it hits bottom (with random delay)
+                if (this.y * this.fontSize > this.canvasHeight && Math.random() > 0.98) {
+                    this.y = 0;
+                }
+                
+                this.counter++;
+            }
+        }
+
+        /**
+         * INITIALIZATION logic
+         */
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            columns = Math.floor(canvas.width / FONT_SIZE);
+            symbols = [];
+
+            for (let i = 0; i < columns; i++) {
+                // Start at random Y positions to stagger the entry
+                symbols[i] = new Symbol(i, Math.random() * -100, FONT_SIZE, canvas.height);
+            }
+        }
+
+        /**
+         * ANIMATION LOOP
+         */
+        let lastTime = 0;
+        const fps = 30; // Matrix looks better slightly jittery
+        const nextFrame = 1000 / fps;
+        let timer = 0;
+
+        function animate(timestamp) {
+            const deltaTime = timestamp - lastTime;
+            lastTime = timestamp;
+
+            if (timer > nextFrame) {
+                // Faded background creates the trail effect
+                ctx.fillStyle = 'rgba(5, 5, 5, 0.15)';
+                ctx.textAlign = 'center';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.font = `bold ${FONT_SIZE}px monospace`;
+                
+                symbols.forEach(symbol => symbol.draw(ctx));
+                timer = 0;
+            } else {
+                timer += deltaTime;
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        /**
+         * SYSTEM LOG SIMULATION
+         */
+        const logs = [
+            "Initializing kernel...",
+            "Decoding packet stream...",
+            "Bypassing firewall...",
+            "Accessing phantom_data.db",
+            "Root access granted.",
+            "Tracing connection...",
+            "Encrypting uplink...",
+            "Pixel Phantom protocol active."
+        ];
+
+        function addLog() {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const timestamp = new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            entry.innerHTML = `> [${timestamp}] ${logs[Math.floor(Math.random() * logs.length)]}`;
+            logContainer.prepend(entry);
+
+            if (logContainer.childNodes.length > 20) {
+                logContainer.removeChild(logContainer.lastChild);
+            }
+
+            // Update Ping for realism
+            pingDisplay.innerText = Math.floor(Math.random() * 50) + 10;
+        }
+
+        /**
+         * LISTENERS
+         */
+        window.addEventListener('resize', () => {
+            init();
+        });
+
+        // "Reboot" on click
+        window.addEventListener('mousedown', () => {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            init();
+        });
+
+        // Start
+        init();
+        animate(0);
+        setInterval(addLog, 2000);
+
+    </script>
+</body>
+</html>
