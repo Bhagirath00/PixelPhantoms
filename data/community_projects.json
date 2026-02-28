@@ -5,6 +5,7 @@
     "description": "A single-file high-visibility neon digital clock with system synchronization.",
     "folder": "project_1",
     "file": "index.html"
+
   },
   {
     "id": "comm_02",
@@ -12,5 +13,6 @@
     "description": "A high-performance falling code animation utilizing HTML5 Canvas and system characters.",
     "folder": "project_2",
     "file": "index.html"
+
   }
 ]
