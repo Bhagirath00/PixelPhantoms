@@ -22,5 +22,13 @@
     "folder": "project_3",
     "file": "index.html"
 
+  },
+  {
+    "id": "comm_04",
+    "title": "Cyber_Task_Sentinel",
+    "description": "A persistent task management interface with local storage integration and terminal-style interactions.",
+    "folder": "project_4",
+    "file": "index.html"
+
   }
 ]
