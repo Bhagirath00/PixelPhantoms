@@ -346,6 +346,8 @@
 
 
 
+
+
 .contributor-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
@@ -1048,6 +1050,7 @@ body.light-mode .heatmap-cell.future-cell {
   /* CHANGE THIS */
   margin: 0; /* instead of margin: 0 auto */
 
+=======
   cursor: pointer;
   gap: 16px;
   position: relative;
