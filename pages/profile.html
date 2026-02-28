@@ -215,6 +215,50 @@
                 </div>
               </div>
             </div>
+
+            <!-- NEW: PERFORMANCE_METRICS CARD (Fix #859) -->
+<div class="profile-card performance-card" data-aos="fade-up" data-aos-delay="250">
+  <div class="card-header">
+    <h3><i class="fas fa-tachometer-alt"></i> PERFORMANCE_METRICS</h3>
+    <div class="card-divider"></div>
+  </div>
+  <div class="card-body">
+    <div class="metrics-grid">
+      
+      <div class="metric-item">
+        <span class="metric-label">Total XP</span>
+        <span class="metric-value" id="metric-xp">0</span>
+        <div class="metric-bar">
+          <div class="metric-fill" id="xp-progress" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <span class="metric-label">Global Rank</span>
+        <span class="metric-value" id="metric-rank">#--</span>
+      </div>
+
+      <div class="metric-item">
+        <span class="metric-label">Activity Streak</span>
+        <span class="metric-value" id="metric-streak">0 days</span>
+      </div>
+
+      <div class="metric-item">
+        <span class="metric-label">Contribution Score</span>
+        <span class="metric-value" id="metric-score">0</span>
+        <div class="metric-bar">
+          <div class="metric-fill" id="score-progress" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <span class="metric-label">Engagement Level</span>
+        <span class="metric-value" id="metric-engagement">Low</span>
+      </div>
+
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </section>
