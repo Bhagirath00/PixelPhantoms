@@ -349,6 +349,9 @@
 
 
  
+
+
+
 .contributor-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
@@ -1037,6 +1040,7 @@ body.light-mode .heatmap-cell.future-cell {
 .contributor-card {
   width: 100%;
  
+
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 32px;
