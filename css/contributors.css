@@ -358,6 +358,11 @@
 
 
 
+
+ 
+
+
+
 .contributor-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
@@ -1108,6 +1113,14 @@ body.light-mode .heatmap-cell.future-cell {
 /* Base Card Style */
 .contributor-card {
   width: 100%;
+  /* REMOVE max-width: 500px; */
+  max-width: 100%; /* or just delete the max-width line */
+
+/* Base Card Style */
+.contributor-card {
+  width: 100%;
+ 
+
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 32px;
@@ -1118,6 +1131,12 @@ body.light-mode .heatmap-cell.future-cell {
   box-shadow: var(--shadow-main);
   box-sizing: border-box;
   transition: transform 0.3s ease;
+
+  /* CHANGE THIS */
+  margin: 0; /* instead of margin: 0 auto */
+
+
+ 
   margin: 0;
   cursor: pointer;
   gap: 16px;
@@ -2005,6 +2024,7 @@ body.dark-mode .repo-item {
   }
 
 
+ 
   .contributors-section {
     padding: 50px 32px;
   }
@@ -2368,6 +2388,24 @@ body.dark-mode .calendar .contrib-legend .legend {
 
 /* DELETED LEGACY HOVER DISABLE HACKS TO RESTORE PREMIUM ANIMATIONS */
 
+.roadmap-step:active {
+  transform: scale(0.98);
+}
+.roadmap-step:focus-visible .step-node {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 6px;
+}
+
+  .roadmap-step:hover {
+    transform: none !important;
+  }
+  .roadmap-step:hover {
+    transform: none !important;
+  }
+.roadmap-step:hover {
+  transform: none !important;
+}
+ 
 
 /* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
 .main-content,
@@ -2695,4 +2733,19 @@ body.dark-mode .calendar .contrib-legend .legend {
 .contributors-section {
   width: 100% !important;
   max-width: 100% !important;
+
+ 
+
+}
+
+/* This targets the specific middle step and forces it to stay put */
+.roadmap-container .roadmap-step:nth-child(4):hover {
+  transform: translateX(-50%) !important;
+}
+
+/* This stops the other steps from moving */
+.roadmap-container .roadmap-step:hover {
+  transform: translateY(0) !important;
+ 
+
 }
