@@ -540,3 +540,65 @@ function resetProfileData() {
         alert("System Purged.");
     }
 }
+
+/* =========================================
+   FIX #858: Export Leaderboard Functionality
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const exportBtn = document.getElementById("export-leaderboard");
+  const tableBody = document.getElementById("leaderboard-body");
+
+  if (!exportBtn || !tableBody) return;
+
+  exportBtn.addEventListener("click", () => {
+    // Show loading state
+    exportBtn.disabled = true;
+    exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exporting...';
+
+    try {
+      // Collect table data
+      const rows = tableBody.querySelectorAll("tr");
+      let csv = "Rank,Agent,Class,Velocity,XP,Status\n";
+
+      rows.forEach((row) => {
+        const cols = row.querySelectorAll("td");
+        if (cols.length === 0) return;
+
+        const rank = cols[0]?.innerText.trim() || "";
+        const agent = cols[1]?.innerText.trim() || "";
+        const agentClass = cols[2]?.innerText.trim() || "";
+        const velocity = cols[3]?.innerText.trim() || "";
+        const xp = cols[4]?.innerText.trim() || "";
+        const status = cols[5]?.innerText.trim() || "";
+
+        csv += `${rank},"${agent}",${agentClass},${velocity},${xp},${status}\n`;
+      });
+
+      // Create CSV file and trigger download
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "active_agents_leaderboard.csv";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Success feedback (console + visual)
+      exportBtn.innerHTML = '<i class="fas fa-check"></i> Exported';
+      setTimeout(() => {
+        exportBtn.innerHTML = '<i class="fas fa-download"></i> Export';
+        exportBtn.disabled = false;
+      }, 2000);
+    } catch (error) {
+      console.error("Export failed:", error);
+      exportBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed';
+      setTimeout(() => {
+        exportBtn.innerHTML = '<i class="fas fa-download"></i> Export';
+        exportBtn.disabled = false;
+      }, 2000);
+    }
+  });
+});

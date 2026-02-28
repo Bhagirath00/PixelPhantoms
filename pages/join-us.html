@@ -107,6 +107,12 @@
    
 }
 
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  filter: brightness(0.8);
+}
+
 
 
 
@@ -291,7 +297,7 @@
 
           <input type="hidden" name="eventTitle" value="General Membership">
 
-          <button type="submit" class="btn-glitch-effect submit-btn">
+          <button type="submit" id="execute-btn" class="btn-glitch-effect submit-btn">
             <span class="text">EXECUTE_JOIN_PROTOCOL</span>
             <span class="decoration"></span>
           </button>

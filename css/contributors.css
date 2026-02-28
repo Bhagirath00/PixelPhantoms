@@ -335,6 +335,7 @@
   padding: 0 40px;
 }
 
+
 #top-contributors {
   text-align: center;
   width: 100%;
@@ -344,7 +345,6 @@
 
 
 
-=======
 
 
 
@@ -2017,7 +2017,7 @@ body.dark-mode .repo-item {
     padding: 0 32px;
   }
 
-=======
+
   .contributors-section {
     padding: 50px 32px;
   }
@@ -3050,4 +3050,5 @@ body.dark-mode .calendar .contrib-legend .legend {
 /* This stops the other steps from moving */
 .roadmap-container .roadmap-step:hover {
   transform: translateY(0) !important;
+
 }
