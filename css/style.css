@@ -396,6 +396,7 @@ body.mobile-menu-open {
 }
 
 @keyframes hoverBounce {
+
   0%,
   100% {
     transform: translateY(-2px) scale(1);
@@ -733,14 +734,14 @@ body.mobile-menu-open {
   -webkit-transform: scale(1);
 }
 
-.theme-switch:checked + .theme-label .toggle-thumb {
+.theme-switch:checked+.theme-label .toggle-thumb {
   transform: translateX(33px);
   -webkit-transform: translateX(33px);
   -moz-transform: translateX(33px);
   -ms-transform: translateX(33px);
 }
 
-.theme-switch:checked + .theme-label .sun-icon {
+.theme-switch:checked+.theme-label .sun-icon {
   opacity: 1;
   transform: scale(1) rotate(360deg);
   -webkit-transform: scale(1) rotate(360deg);
@@ -748,7 +749,7 @@ body.mobile-menu-open {
   -ms-transform: scale(1) rotate(360deg);
 }
 
-.theme-switch:checked + .theme-label .moon-icon {
+.theme-switch:checked+.theme-label .moon-icon {
   opacity: 0;
   transform: scale(0.8) rotate(-360deg);
   -webkit-transform: scale(0.8) rotate(-360deg);
@@ -1307,6 +1308,7 @@ body.mobile-menu-open {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   .focus-card,
   .focus-card:hover,
   .focus-icon,
@@ -2317,6 +2319,7 @@ body.mobile-menu-open {
 }
 
 @media (hover: none) and (pointer: coarse) {
+
   .btn-cyber,
   .btn-primary,
   .btn-secondary,
@@ -2473,6 +2476,7 @@ body.mobile-menu-open {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -2484,6 +2488,7 @@ body.mobile-menu-open {
 }
 
 @keyframes colorShift {
+
   0%,
   100% {
     filter: hue-rotate(0deg);
@@ -2495,6 +2500,7 @@ body.mobile-menu-open {
 }
 
 @keyframes shimmer {
+
   0%,
   100% {
     opacity: 1;
@@ -2530,6 +2536,7 @@ body.mobile-menu-open {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
@@ -3037,7 +3044,7 @@ body.mobile-menu-open {
     animation: none !important;
   }
 
-  .theme-switch:checked + .theme-label .toggle-thumb {
+  .theme-switch:checked+.theme-label .toggle-thumb {
     transition: none !important;
     -webkit-transition: none !important;
   }
@@ -3469,6 +3476,7 @@ main:focus {
 }
 
 @media (max-width: 420px) {
+
   feedback-widget,
   feedback-widget.scrolled {
     bottom: 160px !important;
@@ -3499,6 +3507,7 @@ main:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   #feedback-panel,
   #feedback-toggle,
   #star-rating .star,
@@ -3578,6 +3587,8 @@ code,
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  /* Add explicit containment to prevent lines from drifting out */
+  clip-path: inset(0 0 0 0);
 }
 
 .bolt-emitter {
@@ -4293,22 +4304,22 @@ code,
     display: block !important;
   }
 
-  .grid > *,
-  .flex > *,
-  .bento-grid > *,
-  .hackathon-layout > *,
-  .seminar-grid > *,
-  .project-matrix > *,
-  .functional-grid > *,
-  .footer-content > *,
-  .footer-links > *,
-  .committee-grid > *,
-  .features-grid > *,
-  .roster-grid > *,
-  .comparison-charts > *,
-  .comparison-stats > *,
-  .profile-content-grid > *,
-  .discipline-track-container > * {
+  .grid>*,
+  .flex>*,
+  .bento-grid>*,
+  .hackathon-layout>*,
+  .seminar-grid>*,
+  .project-matrix>*,
+  .functional-grid>*,
+  .footer-content>*,
+  .footer-links>*,
+  .committee-grid>*,
+  .features-grid>*,
+  .roster-grid>*,
+  .comparison-charts>*,
+  .comparison-stats>*,
+  .profile-content-grid>*,
+  .discipline-track-container>* {
     width: 100% !important;
     margin-bottom: 20px !important;
     page-break-inside: avoid !important;
@@ -4412,6 +4423,7 @@ code,
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
@@ -4563,36 +4575,4 @@ code,
   .theme-status-indicator {
     display: none;
   }
-}
-
-/* ===== FORCE DARK THEMED FOOTER (MATCH HOME PAGE) ===== */
-#footer-placeholder footer {
-  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
-  color: #e2e8f0 !important;
-  opacity: 1 !important;
-}
-
-/* Footer text color */
-#footer-placeholder footer p,
-#footer-placeholder footer a,
-#footer-placeholder footer h3,
-#footer-placeholder footer h4,
-#footer-placeholder footer span {
-  color: #cbd5f5 !important;
-}
-
-/* Footer bottom copyright strip */
-#footer-placeholder footer .footer-bottom {
-  background: #020617 !important;
-  color: #94a3b8 !important;
-/* ===== FIX Newsletter Input ===== */
-.footer-newsletter .input-group input.newsletter-input {
-  width: auto !important;          /* stop 100% override */
-  flex: 1 !important;
-  min-width: 0;
-  padding: 0.85rem 1rem !important;
-  padding-right: 1rem !important;  /* remove extra 45px */
-  border: none !important;         /* remove 2px border */
-  background: transparent !important;
-  box-sizing: border-box;
 }
