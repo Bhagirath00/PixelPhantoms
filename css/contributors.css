@@ -345,11 +345,15 @@
   padding: 0 40px;
 }
 
+
 #top-contributors {
   text-align: center;
   width: 100%;
   margin-bottom: 20px;
 }
+
+
+
 
 
 
@@ -1999,6 +2003,7 @@ body.dark-mode .repo-item {
     gap: 20px;
     padding: 0 32px;
   }
+
 
   .contributors-section {
     padding: 50px 32px;
