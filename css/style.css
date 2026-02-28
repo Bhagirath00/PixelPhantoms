@@ -4574,3 +4574,25 @@ code,
     display: none;
   }
 }
+
+/* ===== FORCE DARK THEMED FOOTER (MATCH HOME PAGE) ===== */
+#footer-placeholder footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+  color: #e2e8f0 !important;
+  opacity: 1 !important;
+}
+
+/* Footer text color */
+#footer-placeholder footer p,
+#footer-placeholder footer a,
+#footer-placeholder footer h3,
+#footer-placeholder footer h4,
+#footer-placeholder footer span {
+  color: #cbd5f5 !important;
+}
+
+/* Footer bottom copyright strip */
+#footer-placeholder footer .footer-bottom {
+  background: #020617 !important;
+  color: #94a3b8 !important;
+}

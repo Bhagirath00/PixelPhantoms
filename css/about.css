@@ -894,26 +894,17 @@ body.light-mode .motto-subtitle {
     transform: none;
   }
 }
-<<<<<<< HEAD
-
 /* ===== FIX FOOTER ALIGNMENT (MATCH HOME PAGE) ===== */
 #footer-placeholder footer {
   width: 100%;
 }
 
-#footer-placeholder footer .container {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-  box-sizing: border-box;
-}
-
-/* Ensure footer grid stays centered */
+/* Match Home page footer container width */
+#footer-placeholder footer .container,
 #footer-placeholder .footer-content,
 #footer-placeholder .footer-grid {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  box-sizing: border-box;
 }
-=======
->>>>>>> 4b7f8bbdab96490815151f5af6a58f59297c1cdc
