@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pixel Phantoms Code of Conduct outlining community guidelines and expected behavior for all contributors." />
     <title>Pixel Phantoms | Code of Conduct</title>
 
     <!-- GLOBAL STYLES -->
@@ -27,23 +28,23 @@
 
   <body class="policy-page">
     <!-- SCROLL PROGRESS -->
-    <div id="scroll-progress-container">
+    <div id="scroll-progress-container" aria-hidden="true">
       <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT -->
     <a href="#main-container" class="skip-to-content"> Skip to Main Content </a>
 
-    <div id="cursor-highlight"></div>
+    <div id="cursor-highlight" aria-hidden="true"></div>
 
     <!-- NAVBAR -->
-    <div id="navbar-placeholder"></div>
+    <nav id="navbar-placeholder" aria-label="Main navigation"></nav>
 
     <main id="main-container" tabindex="-1">
-      <!-- PAGE HEADER (like About page) -->
-      <header class="policy-header">
-        <h1>
-          <i class="fas fa-shield-halved"></i>
+      <!-- PAGE HEADER -->
+      <header class="policy-header" role="banner">
+        <h1 id="policy-title">
+          <span aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
           Community Guidelines
         </h1>
         <p>
@@ -53,7 +54,7 @@
       </header>
 
       <!-- CONTENT -->
-      <section class="policy-content">
+      <section class="policy-content" aria-labelledby="policy-title">
         <div class="policy-container">
           <div class="guidelines-grid">
 
@@ -134,12 +135,66 @@
   </div>
 
 </div>
+          <h2 id="commitment-heading">Our Commitment</h2>
+          <p>
+            We, as contributors and maintainers, pledge to make participation in our project a
+            harassment-free experience for everyone, regardless of age, body size, visible or
+            invisible disability, ethnicity, sex characteristics, gender identity and expression,
+            level of experience, education, socio-economic status, nationality, personal appearance,
+            race, religion, or sexual identity and orientation.
+          </p>
+
+          <h2 id="standards-heading">Our Standards</h2>
+          <p>Examples of behavior that contribute to a positive environment include:</p>
+          <ul>
+            <li>Being respectful and considerate</li>
+            <li>Using welcoming and inclusive language</li>
+            <li>Giving constructive feedback</li>
+            <li>Focusing on what is best for the community</li>
+            <li>Showing empathy towards others</li>
+          </ul>
+
+          <p>Examples of unacceptable behavior include:</p>
+          <ul>
+            <li>Harassment, insults, or personal attacks</li>
+            <li>Trolling or creating a hostile environment</li>
+            <li>Publishing others’ private information without permission</li>
+            <li>Discriminatory comments or actions</li>
+            <li>Disruptive or aggressive behavior</li>
+          </ul>
+
+          <h2 id="responsibilities-heading">Our Responsibilities</h2>
+          <ul>
+            <li>Clarifying standards of acceptable behavior</li>
+            <li>Taking appropriate action in response to unacceptable behavior</li>
+            <li>Removing or rejecting contributions that violate this Code of Conduct</li>
+            <li>Temporarily or permanently banning contributors for severe violations</li>
+          </ul>
+
+          <h2 id="scope-heading">Scope</h2>
+          <ul>
+            <li>Within all project-related spaces</li>
+            <li>In public spaces when representing the project or its community</li>
+          </ul>
+
+          <h2 id="enforcement-heading">Enforcement Guidelines</h2>
+          <ol>
+            <li><strong>Warning</strong> – Verbal or written warning for minor violations.</li>
+            <li><strong>Temporary Ban</strong> – Temporary removal from interactions.</li>
+            <li><strong>Permanent Ban</strong> – Severe or repeated violations.</li>
+          </ol>
+
+          <h2 id="attribution-heading">Attribution</h2>
+          <p>
+            This Code of Conduct is adapted from the
+            <strong>Contributor Covenant</strong>, version 2.1.
+          </p>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
-    <div id="footer-placeholder"></div>
+    <footer id="footer-placeholder" aria-label="Site footer"></footer>
 
     <!-- SCRIPTS -->
     <script src="../js/navbar.js"></script>
