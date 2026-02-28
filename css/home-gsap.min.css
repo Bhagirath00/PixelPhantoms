@@ -961,6 +961,48 @@ margin-top: auto;
 }
 
 
+/* ===== FIX: Highlight Top Contributors Rows (#754) ===== */
+
+/* Gold - Rank 1 (Top Contributor) */
+.lb-row.rank-1 {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 215, 0, 0.12),
+        rgba(255, 215, 0, 0.03)
+    );
+    border-left: 4px solid #FFD700;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
+    transform: scale(1.01);
+}
+
+/* Silver - Rank 2 */
+.lb-row.rank-2 {
+    background: linear-gradient(
+        90deg,
+        rgba(192, 192, 192, 0.12),
+        rgba(192, 192, 192, 0.03)
+    );
+    border-left: 4px solid #C0C0C0;
+}
+
+/* Bronze - Rank 3 */
+.lb-row.rank-3 {
+    background: linear-gradient(
+        90deg,
+        rgba(205, 127, 50, 0.12),
+        rgba(205, 127, 50, 0.03)
+    );
+    border-left: 4px solid #CD7F32;
+}
+
+/* Make top usernames more visible */
+.lb-row.rank-1 .lb-username,
+.lb-row.rank-2 .lb-username,
+.lb-row.rank-3 .lb-username {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
 /* =========================================
    9. FUNCTIONAL GRID
    ========================================= */
