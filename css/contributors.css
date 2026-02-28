@@ -339,6 +339,13 @@
   width: 100%;
   margin-bottom: 20px;
 }
+
+
+
+
+
+
+
 .contributor-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
@@ -1026,6 +1033,7 @@ body.light-mode .heatmap-cell.future-cell {
 /* Base Card Style */
 .contributor-card {
   width: 100%;
+
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 32px;
@@ -1040,6 +1048,7 @@ body.light-mode .heatmap-cell.future-cell {
   /* CHANGE THIS */
   margin: 0; /* instead of margin: 0 auto */
 
+=======
   cursor: pointer;
   gap: 16px;
   position: relative;
@@ -2006,6 +2015,7 @@ body.dark-mode .repo-item {
     padding: 0 32px;
   }
 
+=======
   .contributors-section {
     padding: 50px 32px;
   }
@@ -3027,6 +3037,7 @@ body.dark-mode .calendar .contrib-legend .legend {
 .contributors-section {
   width: 100% !important;
   max-width: 100% !important;
+
 }
 
 /* This targets the specific middle step and forces it to stay put */
