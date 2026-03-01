@@ -99,6 +99,26 @@
   animation: blink 1s infinite;
 }
 
+/* Light Theme Overrides for Hero Section */
+:root:not([data-theme='dark']) .hero-section.project-hero {
+  background: #f8fafc;
+}
+
+:root:not([data-theme='dark']) .terminal-box {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+:root:not([data-theme='dark']) .console-text {
+  color: #334155;
+}
+
+:root:not([data-theme='dark']) .console-text.success {
+  color: #16a34a;
+  text-shadow: none;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -244,6 +264,7 @@
 }
 
 @keyframes wobble-effect {
+
   0%,
   100% {
     transform: rotate(0deg) scale(1);
@@ -310,12 +331,12 @@
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--accent-color);
   box-shadow: 0 0 10px var(--accent-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(20px);
 }
 
@@ -546,6 +567,7 @@ body.light-mode .cyber-card {
 
 /* System Flicker/Glitch Animation */
 @keyframes status-flicker {
+
   0%,
   100% {
     opacity: 1;
@@ -1670,6 +1692,7 @@ body.light-mode .filter-results {
 }
 
 @media print {
+
   /* Projects page specific adjustments */
   .project-hero {
     min-height: auto !important;
@@ -1922,6 +1945,7 @@ body.light-mode .filter-results {
 
 /* 3. Mobile Responsiveness */
 @media (max-width: 768px) {
+
   /* Stack filters vertically on mobile */
   .filter-container {
     flex-wrap: wrap;
